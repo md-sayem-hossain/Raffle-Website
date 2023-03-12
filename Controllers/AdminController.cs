@@ -17,6 +17,11 @@ namespace RaffleKing.Controllers
 
         public IActionResult Dashboard()
         {
+            var user = HttpContext.Session.GetString("UserShortCode");
+            if(user == null)
+            {
+                return Redirect("AdminLogin");
+            }
             return View();
         }
         public IActionResult AddRaffle()
@@ -215,10 +220,46 @@ namespace RaffleKing.Controllers
 
 
 
-        public async Task<IActionResult> ViewAdminProfile()
+
+
+
+        public async Task<IActionResult> AdminLogin()
         {
-            
+
             return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> AdminLogin(string email, string password)
+        {
+             
+            using (var db = new RaffleContext())
+            {
+
+                var checkExists = db.profiles.Where(c => c.U_Email == email && c.U_Password == password && c.U_RoleType == "admin").FirstOrDefault();
+
+                if (checkExists != null)
+                {
+                    var usershort = checkExists.U_UserNameShortCode;
+                    var username = checkExists.U_Name;
+
+                    HttpContext.Session.SetString("UserShortCode", usershort);
+                    HttpContext.Session.SetString("username", username);
+
+                    ViewBag.message = "found";
+                    return RedirectToAction("Dashboard", "Admin");
+                }
+                {
+                    ViewBag.message = "not found";
+                }
+            }
+            return View();
+        }
+
+
+        public async Task<IActionResult> Logout()
+        {
+            HttpContext.Session.Remove("UserShortCode");
+            return RedirectToAction("Index", "Raffle");
         }
 
 

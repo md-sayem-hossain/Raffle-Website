@@ -30,50 +30,7 @@ namespace RaffleKing.Controllers
             }
             return View();
         }
-
-
-
-
-
-
-
-
-
-
-
-
-        //[HttpPost]
-        //public ActionResult Login(Login login)
-        //{
-        //    login.Email = login.Email.ToLower();
-        //    var checkExists = db.Logins.Where(c => c.Email == login.Email && c.Password == login.Password).FirstOrDefault();
-
-        //    if (checkExists != null)
-        //    {
-        //        Session["username"] = checkExists.Name;
-        //        Session["userID"] = checkExists.ID;
-
-        //        ViewBag.message = "found";
-        //        return RedirectToAction("Index", "Home");
-        //    }
-        //    {
-        //        ViewBag.message = "no found";
-        //    }
-        //    return View();
-        //}
-
-
-
-
-
-
-
-
-
-
-
-         
-
+          
 
         public async Task<IActionResult> Logout()
         {
