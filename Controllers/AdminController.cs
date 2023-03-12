@@ -14,7 +14,15 @@ namespace RaffleKing.Controllers
     public class AdminController : Controller
     {
         RaffleContext _db = new RaffleContext();
-
+        public IActionResult Index()
+        {
+            var user = HttpContext.Session.GetString("UserShortCode");
+            if (user == null)
+            {
+                return RedirectToAction ("AdminLogin", "Admin");
+            }
+            return View();
+        }
         public IActionResult Dashboard()
         {
             var user = HttpContext.Session.GetString("UserShortCode");
@@ -259,7 +267,7 @@ namespace RaffleKing.Controllers
         public async Task<IActionResult> Logout()
         {
             HttpContext.Session.Remove("UserShortCode");
-            return RedirectToAction("Index", "Raffle");
+            return RedirectToAction("Index", "Admin");
         }
 
 
