@@ -1,15 +1,18 @@
 ﻿@{
     ViewData["Title"] = "Home Page2";
 	var RaffleDetails= ViewBag.RaffleDetails;
+
 }
 
-<main class="mt-5">
-    <div class="bg-light p-5 rounded">
-        <h1>Navbar exampleaa</h1>
-        <p class="lead">This example is a quick exercise to illustrate how fixed to top navbar works. As you scroll, it will remain fixed to the top of your browser’s viewport.</p>
-        <a class="btn btn-lg btn-primary" href="/docs/5.1/components/navbar/" role="button">View navbar docs »</a>
-    </div>
-</main>
+<div class="container">
+	<main class="mt-5">
+		<div class="bg-light p-5 rounded">
+			<h1>Navbar exampleaa</h1>
+			<p class="lead">This example is a quick exercise to illustrate how fixed to top navbar works. As you scroll, it will remain fixed to the top of your browser’s viewport.</p>
+			<a class="btn btn-lg btn-primary" href="/docs/5.1/components/navbar/" role="button">View navbar docs »</a>
+		</div>
+	</main>
+</div> 
 
 
 <section style="display: flex;align-items: center;justify-content: center; margin-top:30px; margin-bottom: 30px;" > 
@@ -22,61 +25,63 @@
 		} 
 		.text-nicelabel:not(:checked) + label {
 		width: 8.25rem;
+			background-color: #ffffff;
+			color: #a7a7a7;
+			border: 1px solid #dbdbdba6;
+			box-shadow: 0 0 10px #e9e9e9;
 		} 
 		.text-nicelabel:checked + label {
 		width: 8.25rem;
 		}
 		 
 	</style>
-	<div>
-		<div id="text-checkbox">
-        <br>
+	
 
-			@{
-
-					var s = RaffleDetails.R_Total_Available + RaffleDetails.R_Total_Booked;
-					for (int i = 1; i <= s; i++)
-					{
-					var data = @RaffleDetails.R_BlockStartFrom + @i;
-						<input class="text-nicelabel" value="@data" data-nicelabel='{"position_class": "text_checkbox", "checked_text": "@data", "unchecked_text": "@data"}' type="checkbox" />
-					} 
-			}
-
-        
-        @*<input class="text-nicelabel" value="3113" data-nicelabel='{"position_class": "text_checkbox", "checked_text": "3113", "unchecked_text": "3113"}' type="checkbox" />
-        <input class="text-nicelabel" value="3113" data-nicelabel='{"position_class": "text_checkbox", "checked_text": "3113", "unchecked_text": "3113"}' type="checkbox" />
-        <input class="text-nicelabel" value="3113" data-nicelabel='{"position_class": "text_checkbox", "checked_text": "3113", "unchecked_text": "3113"}' type="checkbox" />
-        <input class="text-nicelabel" value="3113" data-nicelabel='{"position_class": "text_checkbox", "checked_text": "3113", "unchecked_text": "3113"}' type="checkbox" />
-        <input class="text-nicelabel" value="3113" data-nicelabel='{"position_class": "text_checkbox", "checked_text": "3113", "unchecked_text": "3113"}' type="checkbox" />
-        <input class="text-nicelabel" value="3113" data-nicelabel='{"position_class": "text_checkbox", "checked_text": "3113", "unchecked_text": "3113"}' type="checkbox" />
-        <input class="text-nicelabel" value="3113" data-nicelabel='{"position_class": "text_checkbox", "checked_text": "3113", "unchecked_text": "3113"}' type="checkbox" />
-        <input class="text-nicelabel" value="3113" data-nicelabel='{"position_class": "text_checkbox", "checked_text": "3113", "unchecked_text": "3113"}' type="checkbox" />
-        <input class="text-nicelabel" value="3113" data-nicelabel='{"position_class": "text_checkbox", "checked_text": "3113", "unchecked_text": "3113"}' type="checkbox" />
-        <input class="text-nicelabel" value="3113" data-nicelabel='{"position_class": "text_checkbox", "checked_text": "3113", "unchecked_text": "3113"}' type="checkbox" />
-        <input class="text-nicelabel" value="3113" data-nicelabel='{"position_class": "text_checkbox", "checked_text": "3113", "unchecked_text": "3113"}' type="checkbox" />
-        <input class="text-nicelabel" value="3113" data-nicelabel='{"position_class": "text_checkbox", "checked_text": "3113", "unchecked_text": "3113"}' type="checkbox" />
-        <input class="text-nicelabel" value="3113" data-nicelabel='{"position_class": "text_checkbox", "checked_text": "3113", "unchecked_text": "3113"}' type="checkbox" />
-        <input class="text-nicelabel" value="3113" data-nicelabel='{"position_class": "text_checkbox", "checked_text": "3113", "unchecked_text": "3113"}' type="checkbox" />
-        <input class="text-nicelabel" value="3113" data-nicelabel='{"position_class": "text_checkbox", "checked_text": "3113", "unchecked_text": "3113"}' type="checkbox" />
-        <input class="text-nicelabel" value="3113" data-nicelabel='{"position_class": "text_checkbox", "checked_text": "3113", "unchecked_text": "3113"}' type="checkbox" />*@
-    </div>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12" style="background: #f7f7f7; padding-bottom: 35px;">
+				<div>
+					<div id="text-checkbox">
+						<br> 
+						@{
+							var s = RaffleDetails.R_Total_Available + RaffleDetails.R_Total_Booked;
+							for (int i = 1; i <= s; i++)
+							{
+								var data = @RaffleDetails.R_BlockStartFrom + @i;
+								<input class="text-nicelabel" value="@data" data-nicelabel='{"position_class": "text_checkbox", "checked_text": "@data", "unchecked_text": "@data"}' type="checkbox" />
+							}
+						} 
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
+	
 
 </section>
 
 <section style="margin-top:30px; margin-bottom: 5rem;">
 
-	<div> 
-
-	<h1 id="count">0</h1>
-	<br>
-	<h3 id="selected_box">Selected box are: </h3>
-</div>
-
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div style="background: #585858;
+    color: white;
+    display: flex;
+    align-items: center; font-size: 14px !important;  " >
+					<h1 id="count" style="margin-right: 20px;  font-size: 14px">0</h1>
+                    <br>
+					<h3  style=" font-size: 14px">Selected box are: <span id="selected_box" style=" font-size: 14px"></span> </h3>
+				</div>
+				
+	</div> 
+	</div> 
+	</div> 
 </section>
 
 
 <section>
+	<div class="container">
     <div class="row">
         <div class="col-md-12">
 			@if (ViewContext.HttpContext.Session.GetString("UserShortCode") == null)
@@ -93,6 +98,7 @@
 				<button class="btn btn-success addtocartbtn">Add to cart</button>
 
 			} 
+        </div>
         </div>
     </div>
 </section>
