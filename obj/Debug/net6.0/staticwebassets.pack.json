@@ -381,6 +381,10 @@
       "PackagePath": "staticwebassets\\admin-assets\\assets\\images\\faces\\face4.jpg"
     },
     {
+      "Id": "F:\\Raffle Website\\Raffle Website\\wwwroot\\admin-assets\\assets\\images\\faces\\face5.jpg",
+      "PackagePath": "staticwebassets\\admin-assets\\assets\\images\\faces\\face5.jpg"
+    },
+    {
       "Id": "F:\\Raffle Website\\Raffle Website\\wwwroot\\admin-assets\\assets\\images\\favicon.ico",
       "PackagePath": "staticwebassets\\admin-assets\\assets\\images\\favicon.ico"
     },

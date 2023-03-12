@@ -34,6 +34,11 @@ namespace RaffleKing.Controllers
         }
         public IActionResult AddRaffle()
         {
+            var user = HttpContext.Session.GetString("UserShortCode");
+            if (user == null)
+            {
+                return RedirectToAction("AdminLogin", "Admin");
+            }
             return View();
         }
 
@@ -66,7 +71,13 @@ namespace RaffleKing.Controllers
         }
 
         public async Task<IActionResult> ViewRaffles()
-        { using (var db = new RaffleContext())
+        {
+            var user = HttpContext.Session.GetString("UserShortCode");
+            if (user == null)
+            {
+                return RedirectToAction("AdminLogin", "Admin");
+            }
+            using (var db = new RaffleContext())
             {
                 var raffleList = db.raffles.ToList();
                 ViewBag.RaffleList = raffleList;
@@ -112,6 +123,11 @@ namespace RaffleKing.Controllers
 
         public async Task<IActionResult> EditRaffle(int raffleid)
         {
+            var user = HttpContext.Session.GetString("UserShortCode");
+            if (user == null)
+            {
+                return RedirectToAction("AdminLogin", "Admin");
+            }
             using (var db = new RaffleContext())
             {
                 var raffle = db.raffles.Find(raffleid);
@@ -175,6 +191,11 @@ namespace RaffleKing.Controllers
 
         public async Task<IActionResult> ViewUsers()
         {
+            var user = HttpContext.Session.GetString("UserShortCode");
+            if (user == null)
+            {
+                return RedirectToAction("AdminLogin", "Admin");
+            }
             using (var db = new RaffleContext())
             {
                 var profiles = db.profiles.ToList();
@@ -186,6 +207,11 @@ namespace RaffleKing.Controllers
 
         public async Task<IActionResult> EditUser(int userid)
         {
+            var user = HttpContext.Session.GetString("UserShortCode");
+            if (user == null)
+            {
+                return RedirectToAction("AdminLogin", "Admin");
+            }
             using (var db = new RaffleContext())
             {
                 var profile = db.profiles.Find(userid);
@@ -218,19 +244,18 @@ namespace RaffleKing.Controllers
 
         public async Task<IActionResult> ViewRaffleBlock(int raffleid)
         {
+            var user = HttpContext.Session.GetString("UserShortCode");
+            if (user == null)
+            {
+                return RedirectToAction("AdminLogin", "Admin");
+            }
             using (var db = new RaffleContext())
             {
                 var raffleDetails = db.raffleDetails.Where(c => c.RD_Raffle_Id == raffleid).ToList();
                 ViewBag.raffleDetails = raffleDetails;
             }
             return View();
-        }
-
-
-
-
-
-
+        }  
         public async Task<IActionResult> AdminLogin()
         {
 
@@ -267,7 +292,8 @@ namespace RaffleKing.Controllers
         public async Task<IActionResult> Logout()
         {
             HttpContext.Session.Remove("UserShortCode");
-            return RedirectToAction("Index", "Admin");
+            HttpContext.Session.Remove("username");
+            return RedirectToAction("AdminLogin", "Admin");
         }
 
 

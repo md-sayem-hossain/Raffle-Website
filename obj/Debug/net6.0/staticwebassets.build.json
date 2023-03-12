@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Ye1GRjVxXQAiTFwd1fFL7X3kzOm1Q8rzEW9mwRpX5uo=",
+  "Hash": "rQa/W8wwfJ6AJ7tCJPCKjxIkPVOGGX+MReb2Y3k+8yw=",
   "Source": "RaffleKing",
   "BasePath": "_content/RaffleKing",
   "Mode": "Default",
@@ -1273,6 +1273,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\admin-assets\\assets\\images\\faces\\face4.jpg"
+    },
+    {
+      "Identity": "F:\\Raffle Website\\Raffle Website\\wwwroot\\admin-assets\\assets\\images\\faces\\face5.jpg",
+      "SourceId": "RaffleKing",
+      "SourceType": "Discovered",
+      "ContentRoot": "F:\\Raffle Website\\Raffle Website\\wwwroot\\",
+      "BasePath": "_content/RaffleKing",
+      "RelativePath": "admin-assets/assets/images/faces/face5.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\admin-assets\\assets\\images\\faces\\face5.jpg"
     },
     {
       "Identity": "F:\\Raffle Website\\Raffle Website\\wwwroot\\admin-assets\\assets\\images\\faces-clipart\\pic-1.png",
