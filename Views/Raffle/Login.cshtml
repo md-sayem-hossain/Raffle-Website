@@ -1,0 +1,77 @@
+﻿
+@{
+    Layout = null;
+    ViewBag.Title = "Login";
+}
+
+<link href="~/Content/admin.css" rel="stylesheet" />
+<script src="~/Content/admin.js"></script>
+
+<div style="z-index: 1; position: absolute; width: 25%; right: 2%; top: 13%;">
+    @if (ViewBag.message == "success")
+    {
+        <div class="alert alert-success" role="alert" style="z-index: 100;">
+            Register Successfull!!! Login Now.
+        </div>
+    }
+    @if (ViewBag.message == "not success")
+    {
+        <div class="alert alert-danger" role="alert" style="z-index: 100;">
+            Email Already Exists !!! Try again!
+        </div>
+    }
+    @if (ViewBag.message == "no found")
+    {
+        <div class="alert alert-danger" role="alert" style="z-index: 100;">
+            No User found !!! Try again!
+        </div>
+    }
+</div>
+<section class="h-100">
+    <div class="container h-100">
+        <div class="row justify-content-sm-center h-100">
+            <div class="col-xxl-4 col-xl-5 col-lg-5 col-md-7 col-sm-9" style="margin-top:3%;">
+                <div class="card shadow-lg">
+                    <div class="card-body p-5">
+                        <h1 class="fs-4 card-title fw-bold mb-4">Login</h1>
+                        <form action="Login" method="POST" class="needs-validation" autocomplete="off">
+                            <div class="mb-3">
+                                <label class="mb-2 text-muted" for="U_Email">E-Mail Address</label>
+                                <input id="U_Email" type="email" style="max-width: 100%;" class="form-control" name="U_Email" value="" required autofocus>
+                            </div>
+                            <div class="mb-3">
+                                <div class="mb-2 w-100">
+                                    <label class="text-muted" for="U_Password">Password</label>
+                                </div>
+                                <input id="U_Password" style="max-width: 100%;" type="password" class="form-control" name="U_Password" required>
+                            </div>
+
+                            <div class="d-flex justify-content-lg-between align-content-center">
+                                <div class="form-check">
+                                    <input type="checkbox" name="remember" id="remember" class="form-check-input">
+                                    <label for="remember" class="form-check-label">Remember Me</label>
+                                </div>
+                                <button type="submit" class="btn btn-primary ms-auto">
+                                    Login
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="card-footer py-3 border-0">
+                        <div class="text-center">
+                            Don't have an account?
+                            @Html.ActionLink("Create One", "Registration", "Library", new { area = "" }, new { @class = "text-dark" })
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    setTimeout(function () {
+        $(".alert").fadeOut(1000);
+    }, 3000);
+</script>

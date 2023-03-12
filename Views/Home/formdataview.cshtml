@@ -1,0 +1,22 @@
+﻿
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Password</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            foreach (var val in ViewBag.values)
+            {
+                <tr>
+                    <td>@val.ID</td>
+                    <td>@val.Name</td>
+                    <td>@val.Password</td>
+                </tr>
+            }
+        } 
+    </tbody>
+</table>

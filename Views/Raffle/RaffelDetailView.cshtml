@@ -1,0 +1,130 @@
+﻿@{
+    ViewData["Title"] = "Home Page2";
+	var RaffleDetails= ViewBag.RaffleDetails;
+}
+
+<main class="mt-5">
+    <div class="bg-light p-5 rounded">
+        <h1>Navbar exampleaa</h1>
+        <p class="lead">This example is a quick exercise to illustrate how fixed to top navbar works. As you scroll, it will remain fixed to the top of your browser’s viewport.</p>
+        <a class="btn btn-lg btn-primary" href="/docs/5.1/components/navbar/" role="button">View navbar docs »</a>
+    </div>
+</main>
+
+
+<section style="display: flex;align-items: center;justify-content: center; margin-top:30px; margin-bottom: 30px;" > 
+	<script src="~/nicelabel/js/jquery.min.js"></script>
+	<style>  
+		.text_checkbox {
+			float: left;
+			margin-left: 20px;
+			margin-top: 10px !important;
+		} 
+		.text-nicelabel:not(:checked) + label {
+		width: 8.25rem;
+		} 
+		.text-nicelabel:checked + label {
+		width: 8.25rem;
+		}
+		 
+	</style>
+	<div>
+		<div id="text-checkbox">
+        <br>
+
+			@{
+
+					var s = RaffleDetails.R_Total_Available + RaffleDetails.R_Total_Booked;
+					for (int i = 1; i <= s; i++)
+					{
+					var data = @RaffleDetails.R_BlockStartFrom + @i;
+						<input class="text-nicelabel" value="@data" data-nicelabel='{"position_class": "text_checkbox", "checked_text": "@data", "unchecked_text": "@data"}' type="checkbox" />
+					} 
+			}
+
+        
+        @*<input class="text-nicelabel" value="3113" data-nicelabel='{"position_class": "text_checkbox", "checked_text": "3113", "unchecked_text": "3113"}' type="checkbox" />
+        <input class="text-nicelabel" value="3113" data-nicelabel='{"position_class": "text_checkbox", "checked_text": "3113", "unchecked_text": "3113"}' type="checkbox" />
+        <input class="text-nicelabel" value="3113" data-nicelabel='{"position_class": "text_checkbox", "checked_text": "3113", "unchecked_text": "3113"}' type="checkbox" />
+        <input class="text-nicelabel" value="3113" data-nicelabel='{"position_class": "text_checkbox", "checked_text": "3113", "unchecked_text": "3113"}' type="checkbox" />
+        <input class="text-nicelabel" value="3113" data-nicelabel='{"position_class": "text_checkbox", "checked_text": "3113", "unchecked_text": "3113"}' type="checkbox" />
+        <input class="text-nicelabel" value="3113" data-nicelabel='{"position_class": "text_checkbox", "checked_text": "3113", "unchecked_text": "3113"}' type="checkbox" />
+        <input class="text-nicelabel" value="3113" data-nicelabel='{"position_class": "text_checkbox", "checked_text": "3113", "unchecked_text": "3113"}' type="checkbox" />
+        <input class="text-nicelabel" value="3113" data-nicelabel='{"position_class": "text_checkbox", "checked_text": "3113", "unchecked_text": "3113"}' type="checkbox" />
+        <input class="text-nicelabel" value="3113" data-nicelabel='{"position_class": "text_checkbox", "checked_text": "3113", "unchecked_text": "3113"}' type="checkbox" />
+        <input class="text-nicelabel" value="3113" data-nicelabel='{"position_class": "text_checkbox", "checked_text": "3113", "unchecked_text": "3113"}' type="checkbox" />
+        <input class="text-nicelabel" value="3113" data-nicelabel='{"position_class": "text_checkbox", "checked_text": "3113", "unchecked_text": "3113"}' type="checkbox" />
+        <input class="text-nicelabel" value="3113" data-nicelabel='{"position_class": "text_checkbox", "checked_text": "3113", "unchecked_text": "3113"}' type="checkbox" />
+        <input class="text-nicelabel" value="3113" data-nicelabel='{"position_class": "text_checkbox", "checked_text": "3113", "unchecked_text": "3113"}' type="checkbox" />
+        <input class="text-nicelabel" value="3113" data-nicelabel='{"position_class": "text_checkbox", "checked_text": "3113", "unchecked_text": "3113"}' type="checkbox" />
+        <input class="text-nicelabel" value="3113" data-nicelabel='{"position_class": "text_checkbox", "checked_text": "3113", "unchecked_text": "3113"}' type="checkbox" />
+        <input class="text-nicelabel" value="3113" data-nicelabel='{"position_class": "text_checkbox", "checked_text": "3113", "unchecked_text": "3113"}' type="checkbox" />*@
+    </div>
+	</div>
+
+</section>
+
+<section style="margin-top:30px; margin-bottom: 5rem;">
+
+	<div> 
+
+	<h1 id="count">0</h1>
+	<br>
+	<h3 id="selected_box">Selected box are: </h3>
+</div>
+
+</section>
+
+
+<section>
+    <div class="row">
+        <div class="col-md-12">
+			@if (ViewContext.HttpContext.Session.GetString("UserShortCode") == null)
+			{
+				<div class="alert alert-danger" role="alert">
+                    Login to continue to the add to cart process.
+                    <span style="margin-left:20px; font-weight: bold;">
+                        <a href="#">Login Now</a>
+					</span>
+				</div>
+			}
+			else
+			{
+				<button class="btn btn-success addtocartbtn">Add to cart</button>
+
+			} 
+        </div>
+    </div>
+</section>
+<script>
+	$(function () {
+		$('#text-checkbox>input').nicelabel();
+	});
+</script>
+<script type="text/javascript">
+	let stack=[];
+	$(document).ready(function () {
+		let count=0;
+		$('input[type="checkbox"]').change(function(event) {
+			  if(stack.indexOf(this.value) !== -1){
+					const index = stack.indexOf(this.value);
+					stack.splice(index, 1);
+				}
+				else{
+					stack.push(this.value);
+				}
+			console.log(stack);
+		});
+		$("input[type=checkbox]").each(function () {
+			$(this).change(updateCount);
+		});
+		updateCount();
+		function updateCount() {
+			var count = $("input[type=checkbox]:checked").length;
+			$("#count").text(count);
+			$("#selected_box").text(stack);
+		};
+	});
+
+</script> 
+ 
