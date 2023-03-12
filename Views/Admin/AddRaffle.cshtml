@@ -3,99 +3,7 @@
 @{
     Layout = null;
 }
-@*
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>AddRaffle</title>
-</head>
-<body>
-
-<h4>raffle</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="AddRaffle">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="ID" class="control-label"></label>
-                <input asp-for="ID" class="form-control" />
-                <span asp-validation-for="ID" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="R_Title" class="control-label"></label>
-                <input asp-for="R_Title" class="form-control" />
-                <span asp-validation-for="R_Title" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="R_DrawnAt" class="control-label"></label>
-                <input asp-for="R_DrawnAt" class="form-control" />
-                <span asp-validation-for="R_DrawnAt" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="R_TicketPrice" class="control-label"></label>
-                <input asp-for="R_TicketPrice" class="form-control" />
-                <span asp-validation-for="R_TicketPrice" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="R_Total_Available" class="control-label"></label>
-                <input asp-for="R_Total_Available" class="form-control" />
-                <span asp-validation-for="R_Total_Available" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="R_Total_Booked" class="control-label"></label>
-                <input asp-for="R_Total_Booked" class="form-control" />
-                <span asp-validation-for="R_Total_Booked" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="R_ShortDecription" class="control-label"></label>
-                <input asp-for="R_ShortDecription" class="form-control" />
-                <span asp-validation-for="R_ShortDecription" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="R_FullDecription" class="control-label"></label>
-                <input asp-for="R_FullDecription" class="form-control" />
-                <span asp-validation-for="R_FullDecription" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="R_ThumbnailImage" class="control-label"></label>
-                <input asp-for="R_ThumbnailImage" class="form-control" />
-                <span asp-validation-for="R_ThumbnailImage" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="R_MainImage" class="control-label"></label>
-                <input asp-for="R_MainImage" class="form-control" />
-                <span asp-validation-for="R_MainImage" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
-</body>
-</html>
-*@
-
-
-
-
-
-
-
-
-
-
-
-
-
+  
 <!DOCTYPE html>
 <html lang="en">
 
@@ -212,12 +120,20 @@
                                 </li>
                             </ul>
                         </div>
-                    </li>
+                    </li> 
                     <li class="nav-item">
-                        <a class="nav-link" href="../tables/basic-table.html">
-                            <span class="menu-title">Tables</span>
-                            <i class="mdi mdi-table-large menu-icon"></i>
+                        <a class="nav-link" data-toggle="collapse" href="#general-pages3" aria-expanded="false" aria-controls="general-pages3">
+                            <span class="menu-title">Users</span>
+                            <i class="menu-arrow"></i>
+                            <i class="mdi mdi-medical-bag menu-icon"></i>
                         </a>
+                        <div class="collapse" id="general-pages3">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item">
+                                    @Html.ActionLink("View Users List", "ViewUsers", "Admin",null, new { @class= "nav-link"})
+                                </li> 
+                            </ul>
+                        </div>
                     </li>
 
                 </ul>

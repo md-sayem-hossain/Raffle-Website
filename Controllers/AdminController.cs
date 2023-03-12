@@ -59,9 +59,7 @@ namespace RaffleKing.Controllers
                 ViewBag.RaffleList = raffleList;
             }
             return View();
-        }
-
-
+        } 
 
         public async Task<IActionResult> GenerateRaffleBlock(int raffleid)
         {
@@ -214,6 +212,15 @@ namespace RaffleKing.Controllers
             }
             return View();
         }
-        
+
+
+
+        public async Task<IActionResult> ViewAdminProfile()
+        {
+            
+            return View();
+        }
+
+
     }
 }

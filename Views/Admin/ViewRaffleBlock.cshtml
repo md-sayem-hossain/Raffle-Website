@@ -119,20 +119,28 @@
                         </a>
                         <div class="collapse" id="general-pages">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item active">
+                                <li class="nav-item ">
                                     @Html.ActionLink("Add Raffels", "AddRaffle", "Admin",null, new { @class= "nav-link"})
                                 </li>
-                                <li class="nav-item">
+                                <li class="nav-item active">
                                     @Html.ActionLink("Raffle List", "ViewRaffles", "Admin",null, new { @class= "nav-link"})
                                 </li>
                             </ul>
                         </div>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../tables/basic-table.html">
-                            <span class="menu-title">Tables</span>
-                            <i class="mdi mdi-table-large menu-icon"></i>
+                       <li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" href="#general-pages3" aria-expanded="false" aria-controls="general-pages3">
+                            <span class="menu-title">Users</span>
+                            <i class="menu-arrow"></i>
+                            <i class="mdi mdi-medical-bag menu-icon"></i>
                         </a>
+                        <div class="collapse" id="general-pages3">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item">
+                                    @Html.ActionLink("View Users List", "ViewUsers", "Admin",null, new { @class= "nav-link"})
+                                </li>
+                            </ul>
+                        </div>
                     </li>
 
                 </ul>
