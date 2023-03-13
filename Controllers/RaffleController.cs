@@ -104,12 +104,21 @@ namespace RaffleKing.Controllers
                     }
                     else
                     {
-                        ViewBag.message = "not success";
+                        ViewBag.message = "Not success Try with different email or shortcode";
                     } 
             } 
             return View();
         }
 
+        public async Task<IActionResult> Profile()
+        {
+            return View();
+        }
 
+        [HttpPost]
+        public async Task<IActionResult> Profile(Profile profile)
+        {
+            return View();
+        }
     }
 }
