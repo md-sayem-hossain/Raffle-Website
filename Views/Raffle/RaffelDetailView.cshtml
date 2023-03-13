@@ -3,43 +3,130 @@
 	var RaffleDetails= ViewBag.RaffleDetails;
 
 }
+<script src="~/nicelabel/js/jquery.min.js"></script>
+<style>
+	.text_checkbox {
+		float: left;
+		margin-left: 20px;
+		margin-top: 10px !important;
+	}
 
-<div class="container">
-	<main class="mt-5">
-		<div class="bg-light p-5 rounded">
-			<h1>Navbar exampleaa</h1>
-			<p class="lead">This example is a quick exercise to illustrate how fixed to top navbar works. As you scroll, it will remain fixed to the top of your browser’s viewport.</p>
-			<a class="btn btn-lg btn-primary" href="/docs/5.1/components/navbar/" role="button">View navbar docs »</a>
+	.text-nicelabel:not(:checked) + label {
+		width: 7.25rem;
+		/*background-color: #e9e9e9;*/
+		color: #a7a7a7;
+		/*border: 1px solid #dbdbdba6;*/
+		box-shadow: 0 0 10px #e9e9e9;
+	}
+
+	.text-nicelabel:checked + label {
+		width: 7.25rem;
+	}
+</style>
+<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
+	<div class="col-md-5 p-lg-5 mx-auto my-5">
+		<h1 class="display-4 fw-normal">Raffle Title</h1>
+		<p class="lead fw-normal">Raffle Short Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</p>
+		<a class="btn btn-outline-secondary" href="#">Browse More</a>
+	</div> 
+</div>
+<div class="container col-xxl-8 px-4 py-5">
+    <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+      <div class="col-10 col-sm-8 col-lg-6">
+        <img src="bootstrap-themes.png" class="d-block mx-lg-auto img-fluid" alt="Thumbnail Image" width="700" height="500" loading="lazy">
+      </div>
+      <div class="col-lg-6">
+			<h1 class="display-5 fw-bold lh-1 mb-3">Raffle Title</h1>
+			<h3 class="display-5   lh-1 mb-3" style="font-size: 2rem;">Only for <span class=" fw-bold" style="color: rebeccapurple">12$</span></h3>
+        <p class="lead" style="text-align: justify; font-size: 1rem;">Raffle Long Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <br /> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. <br /> Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-start"> 
+          <button type="button" class="btn btn-outline-secondary btn-lg px-4">More</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<div class="container my-5">
+	<div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
+		<div class="col-lg-12 p-3 p-lg-5 pt-lg-3">
+			<h1 class="display-5 fw-bold   " style="color: black !important; text-align:center">Choose Your Tickets</h1> 
+			<div id="text-checkbox">
+				<br> 
+				@{
+					var see = RaffleDetails.R_Total_Available + RaffleDetails.R_Total_Booked;
+					for (int i = 1; i <= see; i++)
+					{
+						var data = @RaffleDetails.R_BlockStartFrom + @i;
+						<input class="text-nicelabel" value="@data" data-nicelabel='{"position_class": "text_checkbox", "checked_text": "@data", "unchecked_text": "@data"}' type="checkbox" />
+					}
+				}
+			</div>
 		</div>
-	</main>
-</div> 
+	</div>
+</div>
+
+<div class="bg-dark text-secondary px-4 py-5 text-center">
+	<div class="py-5">
+        <h1 class="display-5 fw-bold text-white"> <span id="count"></span> Selected = <span id="cost">00</span>$</h1>
+		<div class="col-lg-12 mx-auto">
+			<p class="fs-5 mb-4">Selected box are. <br /> <span id="selected_box"></span></p>
+			<div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+				@if (ViewContext.HttpContext.Session.GetString("UserShortCode") == null)
+				{
+					<p>
+						Login to continue to the add to cart process. <span style="margin-left:20px; font-weight: bold;">
+							<a href="#">Login Now</a>
+						</span>
+					</p>
+				}
+				else
+				{
+					<button type="button" class="btn btn-outline-info btn-lg px-4 me-sm-3 fw-bold">Add To Cart</button>
+				}
+			</div>
+		</div>
+	</div>
+</div>
 
 
+<div class="container my-5">
+	<div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
+		<div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
+			<h1 class="display-4 fw-bold lh-1">Border hero with cropped image and shadows</h1>
+			<p class="lead">Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.</p>
+			<div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
+				<button type="button" class="btn btn-primary btn-lg px-4 me-md-2 fw-bold">Primary</button>
+				<button type="button" class="btn btn-outline-secondary btn-lg px-4">Default</button>
+			</div>
+		</div>
+		<div class="col-lg-4 offset-lg-1 p-0 overflow-hidden shadow-lg">
+			<img class="rounded-lg-3" src="/Images/iphone.png" alt="" width="720">
+		</div>
+	</div>
+</div>
+<div class="bg-dark text-secondary px-4 py-5 text-center">
+    <div class="py-5">
+      <h1 class="display-5 fw-bold text-white">Dark mode hero</h1>
+      <div class="col-lg-6 mx-auto">
+        <p class="fs-5 mb-4">Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.</p>
+        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+          <button type="button" class="btn btn-outline-info btn-lg px-4 me-sm-3 fw-bold">Custom button</button>
+          <button type="button" class="btn btn-outline-light btn-lg px-4">Secondary</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+@*
 <section style="display: flex;align-items: center;justify-content: center; margin-top:30px; margin-bottom: 30px;" > 
-	<script src="~/nicelabel/js/jquery.min.js"></script>
-	<style>  
-		.text_checkbox {
-			float: left;
-			margin-left: 20px;
-			margin-top: 10px !important;
-		} 
-		.text-nicelabel:not(:checked) + label {
-		width: 8.25rem;
-			background-color: #ffffff;
-			color: #a7a7a7;
-			border: 1px solid #dbdbdba6;
-			box-shadow: 0 0 10px #e9e9e9;
-		} 
-		.text-nicelabel:checked + label {
-		width: 8.25rem;
-		}
-		 
+
 	</style>
 	
 
 	<div class="container">
 		<div class="row">
-			<div class="col-md-12" style="background: #f7f7f7; padding-bottom: 35px;">
+			<div class="col-md-12"  >
 				<div>
 					<div id="text-checkbox">
 						<br> 
@@ -77,31 +164,10 @@
 	</div> 
 	</div> 
 	</div> 
-</section>
+</section>*@
 
 
-<section>
-	<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-			@if (ViewContext.HttpContext.Session.GetString("UserShortCode") == null)
-			{
-				<div class="alert alert-danger" role="alert">
-                    Login to continue to the add to cart process.
-                    <span style="margin-left:20px; font-weight: bold;">
-                        <a href="#">Login Now</a>
-					</span>
-				</div>
-			}
-			else
-			{
-				<button class="btn btn-success addtocartbtn">Add to cart</button>
-
-			} 
-        </div>
-        </div>
-    </div>
-</section>
+ 
 <script>
 	$(function () {
 		$('#text-checkbox>input').nicelabel();
@@ -110,7 +176,7 @@
 <script type="text/javascript">
 	let stack=[];
 	$(document).ready(function () {
-		let count=0;
+		let count = 0;  
 		$('input[type="checkbox"]').change(function(event) {
 			  if(stack.indexOf(this.value) !== -1){
 					const index = stack.indexOf(this.value);
@@ -127,7 +193,9 @@
 		updateCount();
 		function updateCount() {
 			var count = $("input[type=checkbox]:checked").length;
+			var cost = Number(count * 10.3).toFixed(2);
 			$("#count").text(count);
+			$("#cost").text(cost);
 			$("#selected_box").text(stack);
 		};
 	});
