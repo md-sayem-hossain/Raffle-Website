@@ -81,6 +81,7 @@ namespace RaffleKing.Controllers
             {
                 var raffleList = db.raffles.ToList();
                 ViewBag.RaffleList = raffleList;
+                ViewBag.Message = TempData["Message"];
             }
             return View();
         } 
@@ -263,11 +264,9 @@ namespace RaffleKing.Controllers
         }
         [HttpPost]
         public async Task<IActionResult> AdminLogin(string email, string password)
-        {
-             
+        { 
             using (var db = new RaffleContext())
-            {
-
+            { 
                 var checkExists = db.profiles.Where(c => c.U_Email == email && c.U_Password == password && c.U_RoleType == "admin").FirstOrDefault();
 
                 if (checkExists != null)
@@ -294,6 +293,37 @@ namespace RaffleKing.Controllers
             HttpContext.Session.Remove("UserShortCode");
             HttpContext.Session.Remove("username");
             return RedirectToAction("AdminLogin", "Admin");
+        }
+
+
+        public async Task<IActionResult> DeleteRaffle(int raffleid)
+        {
+            var user = HttpContext.Session.GetString("UserShortCode");
+            if (user == null)
+            {
+                return RedirectToAction("AdminLogin", "Admin");
+            }
+            using (var db = new RaffleContext())
+            {
+                var raffle = db.raffles.Where(c => c.ID == raffleid).FirstOrDefault();
+                var raffleDetails = db.raffleDetails.Where(c => c.RD_Raffle_Id == raffleid).ToList();
+                if(raffleDetails.Count != 0)
+                {
+                    foreach(var v in raffleDetails)
+                    {
+                        db.raffleDetails.Remove(v);
+                    } 
+                    db.raffles.Remove(raffle);
+                }
+                else
+                {
+                    db.raffles.Remove(raffle);
+                } 
+                 await db.SaveChangesAsync();
+                 TempData["Message"] = "Deleted Success";
+
+            }
+            return View();
         }
 
 

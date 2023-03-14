@@ -9,101 +9,101 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = RaffleKing
 build_property.RootNamespace = RaffleKing
-build_property.ProjectDir = F:\Raffle Website\Raffle Website\
+build_property.ProjectDir = F:\Raffle Website\Raffle-Website\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = F:\Raffle Website\Raffle Website
+build_property.MSBuildProjectDirectory = F:\Raffle Website\Raffle-Website
 build_property._RazorSourceGeneratorDebug = 
 
-[F:/Raffle Website/Raffle Website/Views/Admin/AddRaffle.cshtml]
+[F:/Raffle Website/Raffle-Website/Views/Admin/AddRaffle.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRkUmFmZmxlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Raffle Website/Raffle Website/Views/Admin/AdminLogin.cshtml]
+[F:/Raffle Website/Raffle-Website/Views/Admin/AdminLogin.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRtaW5Mb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Raffle Website/Raffle Website/Views/Admin/Dashboard.cshtml]
+[F:/Raffle Website/Raffle-Website/Views/Admin/Dashboard.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRGFzaGJvYXJkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Raffle Website/Raffle Website/Views/Admin/EditRaffle.cshtml]
+[F:/Raffle Website/Raffle-Website/Views/Admin/EditRaffle.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRWRpdFJhZmZsZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Raffle Website/Raffle Website/Views/Admin/EditUser.cshtml]
+[F:/Raffle Website/Raffle-Website/Views/Admin/EditUser.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRWRpdFVzZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Raffle Website/Raffle Website/Views/Admin/Index.cshtml]
+[F:/Raffle Website/Raffle-Website/Views/Admin/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Raffle Website/Raffle Website/Views/Admin/ViewRaffleBlock.cshtml]
+[F:/Raffle Website/Raffle-Website/Views/Admin/ViewRaffleBlock.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cVmlld1JhZmZsZUJsb2NrLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Raffle Website/Raffle Website/Views/Admin/ViewRaffles.cshtml]
+[F:/Raffle Website/Raffle-Website/Views/Admin/ViewRaffles.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cVmlld1JhZmZsZXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Raffle Website/Raffle Website/Views/Admin/ViewUsers.cshtml]
+[F:/Raffle Website/Raffle-Website/Views/Admin/ViewUsers.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cVmlld1VzZXJzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Raffle Website/Raffle Website/Views/Home/formdataview.cshtml]
+[F:/Raffle Website/Raffle-Website/Views/Home/formdataview.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxmb3JtZGF0YXZpZXcuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Raffle Website/Raffle Website/Views/Home/formview.cshtml]
+[F:/Raffle Website/Raffle-Website/Views/Home/formview.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxmb3Jtdmlldy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Raffle Website/Raffle Website/Views/Home/Index.cshtml]
+[F:/Raffle Website/Raffle-Website/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Raffle Website/Raffle Website/Views/Home/Privacy.cshtml]
+[F:/Raffle Website/Raffle-Website/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Raffle Website/Raffle Website/Views/Raffle/Index.cshtml]
+[F:/Raffle Website/Raffle-Website/Views/Raffle/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmFmZmxlXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Raffle Website/Raffle Website/Views/Raffle/Login.cshtml]
+[F:/Raffle Website/Raffle-Website/Views/Raffle/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmFmZmxlXExvZ2luLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Raffle Website/Raffle Website/Views/Raffle/Profle.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmFmZmxlXFByb2ZsZS5jc2h0bWw=
+[F:/Raffle Website/Raffle-Website/Views/Raffle/Profile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmFmZmxlXFByb2ZpbGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Raffle Website/Raffle Website/Views/Raffle/RaffelDetailView.cshtml]
+[F:/Raffle Website/Raffle-Website/Views/Raffle/RaffelDetailView.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmFmZmxlXFJhZmZlbERldGFpbFZpZXcuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Raffle Website/Raffle Website/Views/Raffle/Registration.cshtml]
+[F:/Raffle Website/Raffle-Website/Views/Raffle/Registration.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmFmZmxlXFJlZ2lzdHJhdGlvbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Raffle Website/Raffle Website/Views/Shared/Error.cshtml]
+[F:/Raffle Website/Raffle-Website/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Raffle Website/Raffle Website/Views/Shared/_ValidationScriptsPartial.cshtml]
+[F:/Raffle Website/Raffle-Website/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Raffle Website/Raffle Website/Views/_ViewImports.cshtml]
+[F:/Raffle Website/Raffle-Website/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Raffle Website/Raffle Website/Views/_ViewStart.cshtml]
+[F:/Raffle Website/Raffle-Website/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Raffle Website/Raffle Website/Views/Shared/_Layout.cshtml]
+[F:/Raffle Website/Raffle-Website/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-2d8w1ox1g7
