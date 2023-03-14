@@ -189,7 +189,7 @@ namespace RaffleKing.Controllers
             return RedirectToAction("ViewRaffles", "Admin");
         }
 
-
+        [HttpGet]
         public async Task<IActionResult> ViewUsers()
         {
             var user = HttpContext.Session.GetString("UserShortCode");
@@ -323,9 +323,38 @@ namespace RaffleKing.Controllers
                  TempData["Message"] = "Deleted Success";
 
             }
-            return View();
+            return RedirectToAction("ViewRaffles", "Admin");
         }
 
+        public async Task<IActionResult> DeleteUSer(int UserID)
+        {
+            var user = HttpContext.Session.GetString("UserShortCode");
+            if (user == null)
+            {
+                return RedirectToAction("AdminLogin", "Admin");
+            }
+            using (var db = new RaffleContext())
+            {
+                var profile = db.profiles.Where(c => c.Id == UserID).FirstOrDefault();
+                var raffleDetails = db.raffleDetails.Where(c => c.RD_User_Id == UserID).ToList();
+                if (raffleDetails.Count != 0)
+                {
+                    foreach (var v in raffleDetails)
+                    {
+                        db.raffleDetails.Remove(v);
+                    }
+                    db.profiles.Remove(profile);
+                }
+                else
+                {
+                    db.profiles.Remove(profile);
+                }
+                await db.SaveChangesAsync();
+                TempData["Message"] = "Deleted Success";
 
+            }
+            return RedirectToAction("ViewUsers", "Admin");
+
+        }
     }
 }

@@ -217,10 +217,9 @@
                                                                 <a href="@Url.Action("EditRaffle", "Admin", new { raffleid = @raffle.ID})">
                                                                     <i class="mdi mdi-pencil" style="font-size: 1.25rem; margin-right:10px; color: gray"></i>
                                                                 </a>
-                                                                <button onclick="showSwal(@raffle.ID)">
-                                                                    <i class="mdi mdi-pencil" style="font-size: 1.25rem; margin-right:10px; color: gray"></i>
-                                                                </button>
-                                                                <a href=""><i class="mdi mdi-delete" style="font-size: 1.25rem; margin-right:10px;  color: red"></i></a>
+                                                                <button onclick="showSwal(@raffle.ID)" class="btn">
+                                                                    <i class="mdi mdi-delete" style="font-size: 1.25rem; margin-right:10px;  color: red"></i>
+                                                                </button> 
                                                             </td>
                                                         </tr>
                                                     }

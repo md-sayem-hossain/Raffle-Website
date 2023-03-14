@@ -21,11 +21,11 @@ namespace RaffleKing.Controllers
         }
 
         [HttpGet]
-        public IActionResult RaffelDetailView()
+        public IActionResult RaffelDetailView(int id)
         {
             using (var db = new RaffleContext())
             {
-                var RaffleDetails = db.raffles.Find(1);
+                var RaffleDetails = db.raffles.Find(id);
                 ViewBag.RaffleDetails = RaffleDetails;
             }
             return View();

@@ -53,13 +53,17 @@
 			<h1 class="display-5 fw-bold" style="color: black !important; text-align:center">Choose Your Tickets</h1> 
 			<div id="text-checkbox">
 				<br> 
+				
 				@{
-					var see = RaffleDetails.R_Total_Available + RaffleDetails.R_Total_Booked;
-					for (int i = 1; i <= see; i++)
+					if (RaffleDetails !=null)
 					{
-						var data = @RaffleDetails.R_BlockStartFrom + @i;
-						<input class="text-nicelabel" value="@data" data-nicelabel='{"position_class": "text_checkbox", "checked_text": "@data", "unchecked_text": "@data"}' type="checkbox" />
-					}
+						var see = RaffleDetails.R_Total_Available + RaffleDetails.R_Total_Booked;
+						for (int i = 1; i <= see; i++)
+						{
+							var data = @RaffleDetails.R_BlockStartFrom + @i;
+							<input class="text-nicelabel" value="@data" data-nicelabel='{"position_class": "text_checkbox", "checked_text": "@data", "unchecked_text": "@data"}' type="checkbox" />
+						}
+					} 
 				}
 			</div>
 		</div>

@@ -61,7 +61,7 @@
                                                 <p class="disclaimer">@raf.R_ShortDecription</p>
                                                 <div class="book-container ">
                                                     <div class="content">
-                                                        <button class="btn">@Html.ActionLink("Réserver", "RaffelDetailView", "Raffle",null, new { @class= "buttonA"})</button>
+                                                        <button class="btn buttonA">@Html.ActionLink("Réserver", "RaffelDetailView", "Raffle", new {  id = @raf.ID})</button>
                                                     </div>
                                                 </div>
                                             </div>

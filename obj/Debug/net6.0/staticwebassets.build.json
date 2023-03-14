@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "JplD6+JJLkbznRPjFH7e0BXczssN9Gj7J/PEoxlQ6LU=",
+  "Hash": "MN7YQLYpeXO+axSQi6y63O29eUx3A3lpRroX4Fh0wBY=",
   "Source": "RaffleKing",
   "BasePath": "_content/RaffleKing",
   "Mode": "Default",
@@ -2157,6 +2157,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Images\\Iphone-PNG-1024x1024.png"
+    },
+    {
+      "Identity": "F:\\Raffle Website\\Raffle-Website\\wwwroot\\Images\\RB_1021799.jpg",
+      "SourceId": "RaffleKing",
+      "SourceType": "Discovered",
+      "ContentRoot": "F:\\Raffle Website\\Raffle-Website\\wwwroot\\",
+      "BasePath": "_content/RaffleKing",
+      "RelativePath": "Images/RB_1021799.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\RB_1021799.jpg"
     },
     {
       "Identity": "F:\\Raffle Website\\Raffle-Website\\wwwroot\\Images\\testimonials-1.jpg",
