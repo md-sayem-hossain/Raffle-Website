@@ -25,7 +25,9 @@ namespace RaffleKing.Controllers
         {
             using (var db = new RaffleContext())
             {
-                var RaffleDetails = db.raffles.Find(id);
+                var Raffle  = db.raffles.Find(id);
+                var RaffleDetails = db.raffleDetails.Where(c=> c.RD_Raffle_Id == Raffle.ID).ToList();
+                ViewBag.Raffle = Raffle;
                 ViewBag.RaffleDetails = RaffleDetails;
             }
             return View();
@@ -119,6 +121,13 @@ namespace RaffleKing.Controllers
         public async Task<IActionResult> Profile(Profile profile)
         {
             return View();
+        }
+
+        public ActionResult AddtoCart(String blockids)
+        {
+			String[] blocks = blockids.Split(",");
+
+			return View();
         }
     }
 }
