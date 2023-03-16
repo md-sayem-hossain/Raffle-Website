@@ -5,7 +5,8 @@
     var totalCost = ViewBag.totalCost;
     var raffle = ViewBag.raffle; 
     var singleCost = ViewBag.singleCost;
-
+    var blockids = ViewBag.blockids ;
+    var raffleid =ViewBag.raffleid ;
 }
 
   <div class="container">
@@ -45,25 +46,25 @@
     </div>
     <div class="col-md-8 order-md-1">
       <h4 class="mb-3">Billing address</h4>
-      <form class="needs-validation" novalidate>
+        <form class="needs-validation" novalidate method="post" action="AddtoCartSuccess">
         <div class="row">
           <div class="col-md-12 mb-3">
             <label for="firstName">First name</label>
-                        <input type="text" class="form-control" id="U_Name" placeholder="" name="U_Name" value="@user.U_Name" readonly>
-            <div class="invalid-feedback">
+                 <input type="text" class="form-control" id="U_Name" placeholder="" name="U_Name" value="@user.U_Name" readonly>
+                        <input type="hidden" class="form-control" id="Id" placeholder="" name="Id" value="@user.Id">
+                        <input type="hidden" class="form-control" id="blockids" placeholder="" name="blockids" value="@blockids">
+                        <input type="hidden" class="form-control" id="raffleid" placeholder="" name="raffleid" value="@raffleid">                       <div class="invalid-feedback">
               Valid first name is required.
             </div>
-          </div>
-          
-        </div>
-
+          </div> 
+        </div> 
         <div class="mb-3">
           <label for="username">Username</label>
           <div class="input-group">
             <div class="input-group-prepend">
               <span class="input-group-text">@@</span>
             </div>
-                        <input type="text" class="form-control" id="U_UserNameShortCode" placeholder="" name="U_UserNameShortCode" value="@user.U_UserNameShortCode" readonly>
+                 <input type="text" class="form-control" id="U_UserNameShortCode" placeholder="" name="U_UserNameShortCode" value="@user.U_UserNameShortCode" readonly>
             <div class="invalid-feedback" style="width: 100%;">
               Your username is required.
             </div>
@@ -79,8 +80,8 @@
         </div>
 
         <div class="mb-3">
-          <label for="address">Address</label>
-          <input type="text" class="form-control" id="address" placeholder="1234 Main St" required>
+                    <label for="Baddress">Address</label>
+                    <input type="text" class="form-control" id="Baddress" name="Baddress" placeholder="1234 Main St" required>
           <div class="invalid-feedback">
             Please enter your shipping address.
           </div>
@@ -133,7 +134,7 @@
         <div class="row">
           <div class="col-md-6 mb-3">
             <label for="cc-name">Name on card</label>
-                        <input type="text" class="form-control" name="cc-name" id="cc-name" placeholder="" required>
+                        <input type="text" class="form-control" name="cc_name" id="cc_name" placeholder="" required>
             <small class="text-muted">Full name as displayed on card</small>
             <div class="invalid-feedback">
               Name on card is required
@@ -141,7 +142,7 @@
           </div>
           <div class="col-md-6 mb-3">
             <label for="cc-number">Credit card number</label>
-                        <input type="text" class="form-control" id="cc-number" name="cc-number" placeholder="" required>
+                        <input type="text" class="form-control" id="cc_number" name="cc_number" placeholder="0000 0000 0000 0000" required>
             <div class="invalid-feedback">
               Credit card number is required
             </div>
@@ -150,14 +151,14 @@
         <div class="row">
           <div class="col-md-3 mb-3">
             <label for="cc-expiration">Expiration</label>
-                        <input type="text" class="form-control" id="cc-expiration" name="cc-expiration" placeholder="" required>
+                        <input type="text" class="form-control" id="cc_expiration" name="cc_expiration" placeholder="00/00" required>
             <div class="invalid-feedback">
               Expiration date required
             </div>
           </div>
           <div class="col-md-3 mb-3">
             <label for="cc-cvv">CVV</label>
-                        <input type="text" class="form-control" name="cc-cvv" id="cc-cvv" placeholder="" required>
+                        <input type="text" class="form-control" name="cc_cvv" id="cc_cvv" placeholder="000" required>
             <div class="invalid-feedback">
               Security code required
             </div>

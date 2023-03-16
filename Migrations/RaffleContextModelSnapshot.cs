@@ -17,6 +17,66 @@ namespace RaffleKing.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.3");
 
+            modelBuilder.Entity("RaffleKing.Models.Cart", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("User_Email")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("User_id")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("address")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("blockid")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("cc_cvv")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("cc_expiration")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("cc_name")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("cc_number")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("country")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("raffleid")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("state")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("winnerName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("zip")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Carts");
+                });
+
             modelBuilder.Entity("RaffleKing.Models.Profile", b =>
                 {
                     b.Property<int>("Id")

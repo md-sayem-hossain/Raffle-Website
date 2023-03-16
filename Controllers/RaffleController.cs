@@ -4,6 +4,8 @@ using RaffleKing.Models;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Diagnostics.Metrics;
+using System.Net;
+using System.Xml.Linq;
 
 namespace RaffleKing.Controllers
 {
@@ -177,8 +179,9 @@ namespace RaffleKing.Controllers
                 ViewBag.totalCost = Raffleblocks.Length * raffle.R_TicketPrice; 
                 ViewBag.singleCost = raffle.R_TicketPrice; 
                 ViewBag.raffle = raffle; 
-			} 
-
+                ViewBag.blockids = blockids; 
+                ViewBag.raffleid = raffleid; 
+			}  
 			return View();
         }
 
@@ -190,6 +193,51 @@ namespace RaffleKing.Controllers
                 ViewBag.winners = winners;
             } 
             return View();
+        }
+
+
+        [HttpPost]
+        public async Task<ActionResult> AddtoCartSuccess(string Baddress, string country, string state,
+            string zip, string cc_name, string cc_number, string cc_expiration, string cc_cvv, string blockids,
+            int raffleid, string U_Email)
+        {
+            
+            string[] Raffleblocks = blockids.Split(",");
+            
+            using (var db = new RaffleContext())
+            {
+                var user = db.profiles.Where(c => c.U_Email == U_Email).FirstOrDefault();
+
+                for (int i = 0; i < Raffleblocks.Length; i++)
+                {
+                    Cart cart = new Cart();
+
+                    cart.User_id = user.Id;
+                    cart.User_Email = user.U_Email;
+                    cart.address = Baddress;
+                    cart.country = country;
+                    cart.state = state;
+                    cart.zip = zip;
+                    cart.cc_name = cc_name;
+                    cart.cc_number = cc_number;
+                    cart.cc_expiration = cc_expiration;
+                    cart.cc_cvv = cc_cvv;
+                    cart.blockid = Convert.ToInt32(Raffleblocks[i]); 
+                    cart.raffleid = raffleid;
+                    cart.winnerName = "none"; 
+                    db.Carts.Add(cart);
+
+                    var block = Convert.ToInt32(Raffleblocks[i]);
+                    var raffledetails = db.raffleDetails.Where(c => c.Id == block).FirstOrDefault();
+
+                    raffledetails.RD_Booked_Status = true;
+                    raffledetails.RD_BookedBy = user.U_UserNameShortCode; 
+                    db.raffleDetails.Update(raffledetails);
+                } 
+               await db.SaveChangesAsync();
+            }
+
+            return RedirectToAction("Index", "Raffle");
         }
     }
 }
