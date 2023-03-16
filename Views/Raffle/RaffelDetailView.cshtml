@@ -256,7 +256,7 @@
 			myStr = myStr.concat(node, ",");
 			
 		}
-		window.location.href = '@Url.Action("AddtoCart", "Raffle")?blockids=' + myStr;
+		window.location.href = '@Url.Action("AddtoCart", "Raffle")?blockids=' + myStr + '&raffleid=' + @Raffle.ID;
 	}
 </script> 
  

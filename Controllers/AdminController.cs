@@ -62,6 +62,7 @@ namespace RaffleKing.Controllers
             raffle.R_ThumbnailImage = ThumbnailPathForDB;
             raffle.R_MainImage = MainImagePathForDB;
             raffle.R_BlockGenerated = false;
+            raffle.R_Active = true;
             //for image upload end
 
             await _db.raffles.AddAsync(raffle);
@@ -109,6 +110,7 @@ namespace RaffleKing.Controllers
                         raffleDetails.RD_Raffle_block = raffle.R_BlockStartFrom + i;
                         raffleDetails.RD_BookedBy = "None";
                         raffleDetails.RD_Booked_Status = false;
+                        raffleDetails.RD_Winners = "none";
                         await _db.raffleDetails.AddAsync(raffleDetails);
                     }
                     raffle.R_BlockGenerated = true;

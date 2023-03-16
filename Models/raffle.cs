@@ -44,5 +44,8 @@ namespace RaffleKing.Models
 
         [Required]
         public bool R_BlockGenerated { get; set; }
+
+        [Required]
+        public bool R_Active { get; set; }
     }
 }

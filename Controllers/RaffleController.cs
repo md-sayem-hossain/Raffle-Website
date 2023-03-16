@@ -3,6 +3,7 @@ using NuGet.Protocol.Plugins;
 using RaffleKing.Models;
 using Microsoft.AspNetCore.Http;
 using System;
+using System.Diagnostics.Metrics;
 
 namespace RaffleKing.Controllers
 {
@@ -114,20 +115,81 @@ namespace RaffleKing.Controllers
 
         public async Task<IActionResult> Profile()
         {
+            var usershortcode = HttpContext.Session.GetString("UserShortCode");
+            using (var db = new RaffleContext())
+            {
+                var user = db.profiles.Where(c => c.U_UserNameShortCode == usershortcode).FirstOrDefault();
+                ViewBag.profile = user;
+            }
+            ViewBag.Message = TempData["Message"];
             return View();
         }
 
         [HttpPost]
         public async Task<IActionResult> Profile(Profile profile)
         {
-            return View();
+            profile.U_RoleType = "user";
+            using (var db = new RaffleContext())
+            {
+                var user = db.profiles.Find(profile.Id);
+                if (user != null) { 
+                    user.U_Email = profile.U_Email;
+                    user.U_Phone = profile.U_Phone;
+                    user.U_Password = profile.U_Password;
+                    user.U_UserNameShortCode = profile.U_UserNameShortCode;
+                    user.U_Name = profile.U_Name;
+                    user.U_RoleType=profile.U_RoleType;
+
+                    db.profiles.Update(user);
+                    await db.SaveChangesAsync();
+                    TempData["Message"] = "Update Successfully";
+                }
+            }
+            return RedirectToAction("Profile", "Raffle");
         }
 
-        public ActionResult AddtoCart(String blockids)
+        public ActionResult AddtoCart(String blockids, int raffleid)
         {
-			String[] blocks = blockids.Split(",");
+
+			blockids = blockids.Remove(blockids.Length - 1, 1);
+			String[] Raffleblocks = blockids.Split(",");
+
+			var usershortcode = HttpContext.Session.GetString("UserShortCode");
+
+			using (var db = new RaffleContext())
+            {
+				var user = db.profiles.Where(c => c.U_UserNameShortCode == usershortcode).FirstOrDefault();
+
+				var raffle = db.raffles.Find(raffleid);
+
+				List<RaffleDetails> raffleDetails = new List<RaffleDetails>(); 
+                for(int i=0;i< Raffleblocks.Length;i++)
+                {
+					var singleraffleDetails = db.raffleDetails.Where(c => c.RD_Raffle_Id == raffleid && c.Id == Convert.ToInt32(Raffleblocks[i])).FirstOrDefault();
+
+                    if(singleraffleDetails != null)
+                    {
+                        raffleDetails.Add(singleraffleDetails);
+                    }
+				}
+                ViewBag.raffleDetails = raffleDetails;
+                ViewBag.user = user;
+                ViewBag.totalCost = Raffleblocks.Length * raffle.R_TicketPrice; 
+                ViewBag.singleCost = raffle.R_TicketPrice; 
+                ViewBag.raffle = raffle; 
+			} 
 
 			return View();
+        }
+
+        public async Task<IActionResult> Winners()
+        { 
+            using (var db = new RaffleContext())
+            {
+                var winners = db.raffleDetails.Where(c => c.RD_Winners != "none").FirstOrDefault();
+                ViewBag.winners = winners;
+            } 
+            return View();
         }
     }
 }

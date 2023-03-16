@@ -33,7 +33,10 @@
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>   
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Raffle" asp-action="Winners">Winners</a>
+                        </li>
                         @if (ViewContext.HttpContext.Session.GetString("UserShortCode") == null)
                         {
                              <li class="nav-item">
@@ -51,8 +54,10 @@
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <li>
-                                        <a class="nav-link text-dark" asp-area="" asp-controller="Raffle" asp-action="Profile">Profile</a>
-
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="Raffle" asp-action="Profile">Profile</a> 
+                                    </li>
+                                    <li>
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="Raffle" asp-action="MyTickets">My Tickets</a>
                                     </li>
                                     <li>
                                         <a class="nav-link text-dark" asp-area="" asp-controller="Raffle" asp-action="Logout">Logout</a>
@@ -124,6 +129,18 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
 
     <script src="~/nicelabel/js/jquery.nicelabel.js"></script>
+
+
+
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
+
+
+    <script>
+        $(document).ready(function () {
+            $('#example').DataTable();
+        });
+    </script>
 </body>
 </html>

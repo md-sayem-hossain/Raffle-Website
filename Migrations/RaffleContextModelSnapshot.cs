@@ -74,6 +74,10 @@ namespace RaffleKing.Migrations
                     b.Property<int>("RD_User_Id")
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("RD_Winners")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.HasKey("Id");
 
                     b.ToTable("raffleDetails");
@@ -102,6 +106,9 @@ namespace RaffleKing.Migrations
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("R_Active")
                         .HasColumnType("INTEGER");
 
                     b.Property<bool>("R_BlockGenerated")

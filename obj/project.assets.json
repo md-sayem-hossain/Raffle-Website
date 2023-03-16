@@ -11247,11 +11247,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\Raffle Website\\Raffle-Website\\RaffleKing.csproj",
+      "projectUniqueName": "F:\\Raffle-Website\\RaffleKing.csproj",
       "projectName": "RaffleKing",
-      "projectPath": "F:\\Raffle Website\\Raffle-Website\\RaffleKing.csproj",
+      "projectPath": "F:\\Raffle-Website\\RaffleKing.csproj",
       "packagesPath": "C:\\Users\\sayem.hossain\\.nuget\\packages\\",
-      "outputPath": "F:\\Raffle Website\\Raffle-Website\\obj\\",
+      "outputPath": "F:\\Raffle-Website\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

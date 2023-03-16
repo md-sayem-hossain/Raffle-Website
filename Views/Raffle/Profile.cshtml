@@ -1,30 +1,43 @@
-﻿
+﻿@{
+    var profile = ViewBag.profile;
+}
 
 <div class="container my-5">
 	<div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
 		<div class="col-lg-12 p-3 p-lg-5 pt-lg-3">
-			<h1 class="display-5 fw-bold" style="color: black !important; text-align:center">Profile</h1>  
-            <form> 
+			<h1 class="display-5 fw-bold" style="color: lack !important; text-align:center">Profile</h1>  
+            @if(ViewBag.Message !=null)
+            {
+                <div class="alert alert-success" role="alert" id="message">
+                    @ViewBag.Message
+                </div>
+            }
+            
+            <form method="post" action="Profile">
+                 <div class="mb-3"> 
+                    <input type="hidden" class="form-control" id="Id" name="Id" value="@profile.Id"  >
+                </div>
                 <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">Name</label>
-                    <input type="text" class="form-control" id="exampleInputPassword1">
+                    <label for="U_UserNameShortCode" class="form-label">User Name Short Code</label>
+                    <input type="text" class="form-control" id="U_UserNameShortCode" name="U_UserNameShortCode" value="@profile.U_UserNameShortCode" readonly>
+                </div>
+                <div class="mb-3">
+                    <label for="U_Name" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="U_Name" name="U_Name" value="@profile.U_Name">
                 </div> 
+                
                 <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">User Name Short Code</label>
-                    <input type="text" class="form-control" id="exampleInputPassword1">
+                    <label for="U_Email" class="form-label">Email address</label>
+                    <input type="email" class="form-control" id="U_Email" value="@profile.U_Email" name="U_Email" aria-describedby="emailHelp">
                 </div>
                 <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Email address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                </div>
-                <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">Phone</label>
-                    <input type="text" class="form-control" id="exampleInputPassword1">
+                    <label for="U_Phone" class="form-label">Phone</label>
+                    <input type="text" class="form-control" id="U_Phone" name="U_Phone" value="@profile.U_Phone">
                 </div>
 
                 <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">Password</label>
-                    <input type="text" class="form-control" id="exampleInputPassword1">
+                    <label for="U_Password" class="form-label">Password</label>
+                    <input type="text" class="form-control" id="U_Password" name="U_Password" value="@profile.U_Password">
                 </div>
                 <button type="submit" class="btn btn-primary">Update</button>
             </form>
@@ -33,7 +46,11 @@
 </div>
 
 
-
+<script>
+    setTimeout(function () {
+        $('#message').fadeOut('fast');
+    }, 3000);
+</script>
 
 
 
