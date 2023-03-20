@@ -1,187 +1,191 @@
 ﻿@{
-    ViewData["Title"] = "Home Page2";
-	var Raffle = ViewBag.Raffle ;
-	var RaffleDetails= ViewBag.RaffleDetails;
+    ViewData["Title"] = "Home Page";
+    var Raffle = ViewBag.Raffle;
+    var RaffleDetails = ViewBag.RaffleDetails;
 
 }
 <script src="~/nicelabel/js/jquery.min.js"></script>
 <style>
-	.text_checkbox {
-		float: left;
-		margin-left: 20px;
-		margin-top: 10px !important;
-	}
+    .text_checkbox {
+        float: left;
+        margin-left: 20px;
+        margin-top: 10px !important;
+    }
 
-	.text_checkbox.applied {
-		background: #ea4c4c !important;
-		color: white !important;
-	}
-	.text-nicelabel:not(:checked) + label {
-		width: 8.25rem;
-		/*background-color: #e9e9e9;*/
-		color: #a7a7a7;
-		/*border: 1px solid #dbdbdba6;*/
-		box-shadow: 0 0 10px #e9e9e9;
-	}
+        .text_checkbox.applied {
+            background: #ea4c4c !important;
+            color: white !important;
+        }
 
-	.text-nicelabel:checked + label {
-		width: 8.25rem;
-	}
+    .text-nicelabel:not(:checked) + label {
+        width: 8.25rem;
+        /*background-color: #e9e9e9;*/
+        color: #a7a7a7;
+        /*border: 1px solid #dbdbdba6;*/
+        box-shadow: 0 0 10px #e9e9e9;
+    }
+
+    .text-nicelabel:checked + label {
+        width: 8.25rem;
+    }
 </style>
 <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light" style="background:linear-gradient(0deg, rgba(0, 0, 0, 0.33), rgba(0, 0, 0, 0.78)), url('@Url.Content(@Raffle.R_MainImage)')  ; background-size:cover;">
-	<div class="col-md-5 p-lg-5 mx-auto my-5" style="color: white !important;">
-		<h1 class="display-4 fw-normal" style="    font-size: 2.5rem; font-weight: 600 !important;">@Raffle.R_Title </h1>
-		<p class="lead fw-normal">@Raffle.R_ShortDecription</p>
-		<p class="lead fw-normal">Drawn at @Raffle.R_DrawnAt</p>
-		<a class="btn btn-outline-secondary" href="#" style="color: white !important; border: 1px solid white;">Browse More</a>
-	</div> 
+    <div class="col-md-5 p-lg-5 mx-auto my-5" style="color: white !important;">
+        <h1 class="display-4 fw-normal" style="    font-size: 2.5rem; font-weight: 600 !important;">@Raffle.R_Title </h1>
+        <p class="lead fw-normal">@Raffle.R_ShortDecription</p>
+        <p class="lead fw-normal">Drawn at @Raffle.R_DrawnAt</p>
+        <a class="btn btn-outline-secondary" href="#" style="color: white !important; border: 1px solid white;">Browse More</a>
+    </div>
 </div>
 <div class="container col-xxl-8 px-4 py-5">
     <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
-      <div class="col-10 col-sm-8 col-lg-6">
-			<img src="@Raffle.R_ThumbnailImage" class="d-block mx-lg-auto img-fluid" alt="Thumbnail Image" width="700" height="500" loading="lazy">
-      </div>
-      <div class="col-lg-6">
-			<h1 class="display-5 fw-bold lh-1 mb-3">@Raffle.R_Title</h1>
-			<h3 class="display-5   lh-1 mb-3" style="font-size: 2rem;">Only for <span class=" fw-bold" style="color: rebeccapurple">@Raffle.R_TicketPrice R</span></h3>
-        <p class="lead" style="text-align: justify; font-size: 1rem;">
-				@Raffle.R_FullDecription
-		</p>
-        <div class="d-grid gap-2 d-md-flex justify-content-md-start"> 
-          <button type="button" class="btn btn-outline-secondary btn-lg px-4">More</button>
+        <div class="col-10 col-sm-8 col-lg-6">
+            <img src="@Raffle.R_ThumbnailImage" class="d-block mx-lg-auto img-fluid" alt="Thumbnail Image" width="700" height="500" loading="lazy">
         </div>
-      </div>
+        <div class="col-lg-6">
+            <h1 class="display-5 fw-bold lh-1 mb-3">@Raffle.R_Title</h1>
+            <h3 class="display-5   lh-1 mb-3" style="font-size: 2rem;">Only for <span class=" fw-bold" style="color: rebeccapurple">R @Raffle.R_TicketPrice</span></h3>
+            <p class="lead" style="text-align: justify; font-size: 1rem;">
+                @Raffle.R_FullDecription
+            </p>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                <button type="button" class="btn btn-outline-secondary btn-lg px-4">More</button>
+            </div>
+        </div>
     </div>
-  </div>
+</div>
 
 
 <div class="container my-5">
-	<div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
-		<div class="col-lg-12 p-3 p-lg-5 pt-lg-3">
-			<h1 class="display-5 fw-bold" style="color: black !important; text-align:center">Choose Your Lucky Number</h1> 
-			<div id="text-checkbox">
-				<br>  
-				@{
-					if (RaffleDetails !=null)
-					{
-						foreach (var v in RaffleDetails)
-						{
-							if (v.RD_Booked_Status == false)
-							{
-								<input class="text-nicelabel" value="@v.Id" data-nicelabel='{"position_class": "text_checkbox", "checked_text": "@v.RD_Raffle_block", "unchecked_text": "@v.RD_Raffle_block"}' type="checkbox" />
-							}
-							else
-							{
-								<input class="text-nicelabel" disabled value="@v.Id @v.RD_BookedBy" data-nicelabel='{"position_class": "text_checkbox applied", "checked_text": "@v.RD_Raffle_block @v.RD_BookedBy", "unchecked_text": "@v.RD_Raffle_block @v.RD_BookedBy"}' type="checkbox" />
-							}
-						}
-						//var see = RaffleDetails.R_Total_Available + RaffleDetails.R_Total_Booked;
-						//for (int i = 1; i <= see; i++)
-						//{
-						//	var data = @RaffleDetails.R_BlockStartFrom + @i;
-						//	<input class="text-nicelabel" value="@data" data-nicelabel='{"position_class": "text_checkbox", "checked_text": "@data", "unchecked_text": "@data"}' type="checkbox" />
-						//}
-					} 
-				}
-			</div>
-		</div>
-	</div>
+    <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
+        <div class="col-lg-12 p-3 p-lg-5 pt-lg-3">
+            <h1 class="display-5 fw-bold" style="color: black !important; text-align:center">Choose Your Lucky Number</h1>
+            <div id="text-checkbox">
+                <br>
+                @{
+                    if (RaffleDetails != null)
+                    {
+                        foreach (var v in RaffleDetails)
+                        {
+                            if (v.RD_Booked_Status == false)
+                            {
+                                <input class="text-nicelabel" value="@v.Id" data-nicelabel='{"position_class": "text_checkbox", "checked_text": "@v.RD_Raffle_block", "unchecked_text": "@v.RD_Raffle_block"}' type="checkbox" />
+                            }
+                            else
+                            {
+                                <input class="text-nicelabel" disabled value="@v.Id @v.RD_BookedBy" data-nicelabel='{"position_class": "text_checkbox applied", "checked_text": "@v.RD_Raffle_block @v.RD_BookedBy", "unchecked_text": "@v.RD_Raffle_block @v.RD_BookedBy"}' type="checkbox" />
+                            }
+                        }
+                        //var see = RaffleDetails.R_Total_Available + RaffleDetails.R_Total_Booked;
+                        //for (int i = 1; i <= see; i++)
+                        //{
+                        //	var data = @RaffleDetails.R_BlockStartFrom + @i;
+                        //	<input class="text-nicelabel" value="@data" data-nicelabel='{"position_class": "text_checkbox", "checked_text": "@data", "unchecked_text": "@data"}' type="checkbox" />
+                        //}
+                    }
+                }
+            </div>
+        </div>
+    </div>
 </div>
 
 <div class="bg-dark text-secondary px-4 py-5 text-center">
-	<div class="py-5">
-        <h1 class="display-5 fw-bold text-white"> <span id="count"></span> Selected = <span id="cost">00</span>$</h1>
-		<div class="col-lg-12 mx-auto">
-			@*<p class="fs-5 mb-4">Selected tickets are: <br /> <span id="selected_box"></span></p>*@
-			<div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-				@if (ViewContext.HttpContext.Session.GetString("UserShortCode") == null)
-				{
-					<p>
-						Login to continue to the add to cart process. <span style="margin-left:20px; font-weight: bold;">
-							<a href="#">Login Now</a>
-						</span>
-					</p>
-				}
-				else
-				{
-					<button type="button" class="btn btn-outline-info btn-lg px-4 me-sm-3 fw-bold" onclick="addtoCart()">Add To Cart</button>
-				}
-			</div>
-		</div>
-	</div>
+    <div class="py-5">
+        <h1 class="display-5 fw-bold text-white"> <span id="count"></span> Selected = R<span id="cost">00</span></h1>
+        <div class="col-lg-12 mx-auto">
+            @*<p class="fs-5 mb-4">Selected tickets are: <br /> <span id="selected_box"></span></p>*@
+            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                @if (ViewContext.HttpContext.Session.GetString("UserShortCode") == null)
+                {
+                    <p>
+                        Login to continue to the add to cart process. <span style="margin-left:20px; font-weight: bold;">
+                            <a href="#">Login Now</a>
+                        </span>
+                    </p>
+                }
+                else
+                {
+                    <button type="button" class="btn btn-outline-info btn-lg px-4 me-sm-3 fw-bold" onclick="addtoCart()">Add To Cart</button>
+                }
+            </div>
+        </div>
+    </div>
 </div>
 
 
 
 <div class="container my-5">
-	<div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
-		<div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
-			<h1 class="display-4 fw-bold lh-1">What is Raffle King Website</h1>
-			<p class="lead">
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-				Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-				Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. <br>
-				Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-			</p>
-			<div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
-				<button type="button" class="btn btn-primary btn-lg px-4 me-md-2 fw-bold">Primary</button>
-				<button type="button" class="btn btn-outline-secondary btn-lg px-4">Default</button>
-			</div>
-		</div>
-		<div class="col-lg-4 offset-lg-1 p-0 overflow-hidden shadow-lg">
-			<img class="rounded-lg-3" src="/Images/iphone.png" alt="" width="720">
-		</div>
-	</div>
-</div> 
-
- <div class="container col-xxl-8 px-4 py-5">
-    <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
-      
-      <div class="col-lg-12">
-			<h1 class="display-5 fw-bold lh-1 mb-3">Terms & Conditions</h1>
-			<h3 class="display-5   lh-1 mb-3" style="font-size: 2rem;">Disclaimer</h3>
-        <p class="lead" style="text-align: justify; font-size: 1rem;">
-				The purchaser of the MIllionaire Draw ticket is solely responsible to ensure that participation in such a 
-				promotion does not contravene the laws and regulations of the country in which the purchaser is residing 
-				during the time of purchase. <br>
-				Qatar Duty Free does not implicitly or explicitly warrant that participation
-				in this promotion is in compliance with local laws and regulations in the country of residence, and Qatar
-				Duty Free is not responsible if the purchaser contravenes local laws and regulations by participating in 
-				this promotion.
-		</p>
-        <br> 
-		<h3 class="display-5   lh-1 mb-3" style="font-size: 2rem;">Customer Notes</h3>
-        <p class="lead" style="text-align: justify; font-size: 1rem;">
-				Please note the following points with all our online raffle tickets:  <br>
-				All customers purchasing online will instantly receive an e-ticket by email after successful payment transaction. 
-				Please provide correct email address along with other contact information.  <br>
-				Qatar Duty Free will not send physical raffle ticket, your e-ticket is all you will need to claim a prize if you win.
-				Customers can also download their e-ticket from the “Thank You” page that is shown soon after order processing.  <br>
-				If you are a registered customer with us, then your e-ticket will also be available under ”My Account->Order History” page within QDF website.<br>
-				All tickets purchased online are non-refundable. <br>
-				Qatar Airways Group staff (excluding QDF staff) may to purchase raffle draw tickets online and at HIA.
-				Qatar Duty Free staff are not eligible to purchase draw tickets.<br>
-				For any clarifications, please contact us on support@gmail.com and we will be happy to assist
-		</p>
-        <div class="d-grid gap-2 d-md-flex justify-content-md-start"> 
-          <button type="button" class="btn btn-outline-secondary btn-lg px-4">More</button>
+    <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
+        <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
+            <h1 class="display-4 fw-bold lh-1">What is Raffle Kings Website</h1>
+            <p class="lead">
+                Raffle Kings is an online platform that provides a comprehensive collection of raffles for enthusiasts to browse, select and participate in.
+                The website offers a diverse range of raffles from various categories, each with a unique set of prizes and chances to win.
+                Users can view a detailed description and photos of each raffle, select available slots, see the calculation of the total amount due, enter their name and contact details, and book their slots.
+                The website also provides an admin panel for the website admin to add and edit raffle pages, manage the list of running raffles, and view their booking status. <br> <br>
+                Raffle Kings aims to provide a seamless and engaging experience for raffle enthusiasts, with a user-friendly interface and a simple booking process.
+            </p>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
+                <button type="button" class="btn btn-primary btn-lg px-4 me-md-2 fw-bold">Primary</button>
+                <button type="button" class="btn btn-outline-secondary btn-lg px-4">Default</button>
+            </div>
         </div>
-      </div>
+        <div class="col-lg-4 offset-lg-1 p-0 overflow-hidden shadow-lg">
+            <img class="rounded-lg-3" src="/Images/iphone.png" alt="" width="720">
+        </div>
     </div>
-  </div>
+</div>
+
+<div class="container col-xxl-8 px-4 py-5">
+    <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+
+        <div class="col-lg-12">
+            <h1 class="display-5 fw-bold lh-1 mb-3">Terms & Conditions</h1>
+            <h3 class="display-5   lh-1 mb-3" style="font-size: 2rem;">Disclaimer</h3>
+            <p class="lead" style="text-align: justify; font-size: 1rem;">
+                1.	Introduction <br>
+                Welcome to Raffle Kings, an online platform for raffle enthusiasts to browse, select, and participate in various raffles. By using this website, you agree to comply with and be bound by the following terms and conditions of use. If you do not agree to these terms and conditions, please do not use this website. <br>
+                2.	Eligibility <br>
+                Participants must be at least 18 years old to participate in any raffles offered on Raffle Kings. Participants must also comply with all applicable laws and regulations in their jurisdiction. <br>
+                3.	Raffles <br>
+                Raffles offered on Raffle Kings are subject to availability and may change without notice. The website reserves the right to cancel or change any raffle at any time, without notice. <br>
+                4.	Booking <br>
+                Participants can book available slots in any raffle offered on Raffle Kings. The total amount due will be calculated based on the number of slots selected and the price of a single slot. Participants must enter their name and contact details accurately, and payment must be made before the booking can be confirmed. <br>
+                5.	Prize Redemption <br>
+                All prizes offered on Raffle Kings are subject to availability and may change without notice. The website is not responsible for the quality, safety, or suitability of any prize offered. Winners are responsible for any applicable taxes, duties, or other charges associated with the prize. <br>
+                6.	Liability <br>
+                The website is not liable for any direct, indirect, incidental, or consequential damages arising out of the use or inability to use the website, the raffles offered, or the prizes won. The website is not responsible for any loss, theft, or damage to any personal property of participants. <br>
+                7.	Intellectual Property <br>
+                All content on the Raffle Kings website, including but not limited to text, images, logos, and trademarks, is the property of Raffle Kings or its affiliates and is protected by copyright laws. You may not use any content on this website for commercial purposes without the express written consent of Raffle Kings. <br>
+                8.	Governing Law <br>
+                These terms and conditions are governed by and construed in accordance with the laws of the jurisdiction in which Raffle Kings operates. <br>
+                9.	Changes to Terms and Conditions <br>
+                Raffle Kings reserves the right to change these terms and conditions at any time, without notice. Your continued use of the website constitutes your agreement to any such changes. <br>
+                10.	Disclaimer <br>
+                Raffle Kings does not guarantee that the website, raffles offered, or prizes won will meet your requirements or expectations, or that they will be uninterrupted, timely, secure, or error-free. The website is provided on an "as is" and "as available" basis. <br>
+                11.	Contact Information <br>
+                If you have any questions or concerns about these terms and conditions, please contact us at RKINGS@gmail.com <br> <br>
+                By using Raffle Kings, you acknowledge that you have read, understood, and agree to these terms and conditions.
+            </p>
+            @*<div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                <button type="button" class="btn btn-outline-secondary btn-lg px-4">More</button>
+            </div>*@
+        </div>
+    </div>
+</div>
 
 @*
-<section style="display: flex;align-items: center;justify-content: center; margin-top:30px; margin-bottom: 30px;" > 
+<section style="display: flex;align-items: center;justify-content: center; margin-top:30px; margin-bottom: 30px;" >
 
 	</style>
-	
+
 
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12"  >
 				<div>
 					<div id="text-checkbox">
-						<br> 
+						<br>
 						@{
 							var s = RaffleDetails.R_Total_Available + RaffleDetails.R_Total_Booked;
 							for (int i = 1; i <= s; i++)
@@ -189,13 +193,13 @@
 								var data = @RaffleDetails.R_BlockStartFrom + @i;
 								<input class="text-nicelabel" value="@data" data-nicelabel='{"position_class": "text_checkbox", "checked_text": "@data", "unchecked_text": "@data"}' type="checkbox" />
 							}
-						} 
+						}
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	
+
 
 </section>
 
@@ -212,55 +216,54 @@
                     <br>
 					<h3  style=" font-size: 14px">Selected box are: <span id="selected_box" style=" font-size: 14px"></span> </h3>
 				</div>
-				
-	</div> 
-	</div> 
-	</div> 
+
+	</div>
+	</div>
+	</div>
 </section>*@
 
 
- 
+
 <script>
-	$(function () {
-		$('#text-checkbox>input').nicelabel();
-	});
+    $(function () {
+        $('#text-checkbox>input').nicelabel();
+    });
 </script>
 <script type="text/javascript">
-	let stack=[];
-	$(document).ready(function () {
-		let count = 0;  
-		$('input[type="checkbox"]').change(function(event) {
-			  if(stack.indexOf(this.value) !== -1){
-					const index = stack.indexOf(this.value);
-					stack.splice(index, 1);
-				}
-				else{
-					stack.push(this.value);
-				}
-			console.log(stack);
-		});
-		$("input[type=checkbox]").each(function () {
-			$(this).change(updateCount);
-		});
-		updateCount();
-		function updateCount() {
-			var count = $("input[type=checkbox]:checked").length;
-			var cost = Number(count * @Raffle.R_TicketPrice).toFixed(2);
-			$("#count").text(count);
-			$("#cost").text(cost);
-			$("#selected_box").text(stack);
-		};
+    let stack = [];
+    $(document).ready(function () {
+        let count = 0;
+        $('input[type="checkbox"]').change(function (event) {
+            if (stack.indexOf(this.value) !== -1) {
+                const index = stack.indexOf(this.value);
+                stack.splice(index, 1);
+            }
+            else {
+                stack.push(this.value);
+            }
+            console.log(stack);
+        });
+        $("input[type=checkbox]").each(function () {
+            $(this).change(updateCount);
+        });
+        updateCount();
+        function updateCount() {
+            var count = $("input[type=checkbox]:checked").length;
+            var cost = Number(count * @Raffle.R_TicketPrice).toFixed(2);
+            $("#count").text(count);
+            $("#cost").text(cost);
+            $("#selected_box").text(stack);
+        };
 
-		
-	});
-	function addtoCart() {
-		let myStr  = "";
-		for (var i = 0; i < stack.length; i++) {
-			var node = stack[i];
-			myStr = myStr.concat(node, ",");
-			
-		}
-		window.location.href = '@Url.Action("AddtoCart", "Raffle")?blockids=' + myStr + '&raffleid=' + @Raffle.ID;
-	}
-</script> 
- 
+
+    });
+    function addtoCart() {
+        let myStr = "";
+        for (var i = 0; i < stack.length; i++) {
+            var node = stack[i];
+            myStr = myStr.concat(node, ",");
+
+        }
+        window.location.href = '@Url.Action("AddtoCart", "Raffle")?blockids=' + myStr + '&raffleid=' + @Raffle.ID;
+    }
+</script>
