@@ -130,6 +130,20 @@
                             </ul>
                         </div>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" href="#general-pages4" aria-expanded="false" aria-controls="general-pages4">
+                            <span class="menu-title">Winners Or Cart</span>
+                            <i class="menu-arrow"></i>
+                            <i class="mdi mdi-medical-bag menu-icon"></i>
+                        </a>
+                        <div class="collapse" id="general-pages4">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item">
+                                    @Html.ActionLink("Cart Details", "CartDetails", "Admin",null, new { @class= "nav-link"})
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
                 </ul>
             </nav>
 

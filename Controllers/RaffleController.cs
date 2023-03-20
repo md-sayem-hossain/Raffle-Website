@@ -6,6 +6,7 @@ using System;
 using System.Diagnostics.Metrics;
 using System.Net;
 using System.Xml.Linq;
+using System.Net.Sockets;
 
 namespace RaffleKing.Controllers
 {
@@ -189,8 +190,24 @@ namespace RaffleKing.Controllers
         { 
             using (var db = new RaffleContext())
             {
-                var winners = db.raffleDetails.Where(c => c.RD_Winners != "none").FirstOrDefault();
-                ViewBag.winners = winners;
+                var winners = db.Carts.Where(c => c.winnerName != "none").ToList();
+
+                List<Winnershow> winnershows = new List<Winnershow>();
+                for(int i=0;i<winners.Count;i++)
+                {
+                    var raffle = db.raffles.Where(c => c.ID == winners[i].raffleid).FirstOrDefault();
+                    var raffleblk = db.raffleDetails.Where(c => c.Id == winners[i].blockid).FirstOrDefault();
+                    Winnershow winnersh = new Winnershow();
+
+                    winnersh.RaffleName = raffle.R_Title;
+                    winnersh.TIcketNo = raffleblk.RD_Raffle_block;
+                    winnersh.WinnerName = winners[i].winnerName;
+                    winnersh.Country = winners[i].country;
+                    winnersh.DrawnAt = raffle.R_DrawnAt;
+
+                    winnershows.Add(winnersh);
+                }
+                ViewBag.winners = winnershows;
             } 
             return View();
         }
@@ -231,13 +248,60 @@ namespace RaffleKing.Controllers
                     var raffledetails = db.raffleDetails.Where(c => c.Id == block).FirstOrDefault();
 
                     raffledetails.RD_Booked_Status = true;
+                    raffledetails.RD_User_Id = user.Id;
                     raffledetails.RD_BookedBy = user.U_UserNameShortCode; 
                     db.raffleDetails.Update(raffledetails);
-                } 
+                }
+                var ss = db.raffles.Find(raffleid);
+                ss.R_Total_Booked = Raffleblocks.Length;
+                db.raffles.Update(ss);
                await db.SaveChangesAsync();
             }
 
-            return RedirectToAction("Index", "Raffle");
+            return RedirectToAction("PaymentSuccess", "Raffle");
         }
+
+
+        public async Task<IActionResult> PaymentSuccess()
+        {
+           
+            return View();
+        }
+
+        public async Task<IActionResult> MyTickets()
+        {
+            //< th > Raffle Name </ th >
+            //            < th > Ticket No </ th >
+            //            < th > Price </ th >
+            //            < th > Will Drawn At</ th >
+
+            var usershortcode = HttpContext.Session.GetString("UserShortCode");
+
+            
+            List<mytickets> list = new List<mytickets>();
+
+            using (var db = new RaffleContext())
+            {
+                var user = db.profiles.Where(c => c.U_UserNameShortCode == usershortcode).FirstOrDefault();
+                var s = db.raffleDetails.Where(c => c.RD_User_Id == user.Id).ToList();
+                
+                for (int  i=0;i<s.Count;i++)
+                {
+                    mytickets mytickets = new mytickets();
+                    mytickets.Ticket_No = s[i].RD_Raffle_block;
+
+                    var raffle = db.raffles.Find(s[i].RD_Raffle_Id);
+
+                    mytickets.Will_Drawn = raffle.R_DrawnAt;
+                    mytickets.Price = raffle.R_TicketPrice;
+                    mytickets.Raffle_Name = raffle.R_Title;
+
+                    list.Add(mytickets);
+                }
+            }
+            ViewBag.mytickets = list;
+                return View();
+        }
+        
     }
 }

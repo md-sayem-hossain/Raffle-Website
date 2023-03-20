@@ -19,14 +19,14 @@ namespace RaffleKing.Controllers
             var user = HttpContext.Session.GetString("UserShortCode");
             if (user == null)
             {
-                return RedirectToAction ("AdminLogin", "Admin");
+                return RedirectToAction("AdminLogin", "Admin");
             }
             return View();
         }
         public IActionResult Dashboard()
         {
             var user = HttpContext.Session.GetString("UserShortCode");
-            if(user == null)
+            if (user == null)
             {
                 return Redirect("AdminLogin");
             }
@@ -85,7 +85,7 @@ namespace RaffleKing.Controllers
                 ViewBag.Message = TempData["Message"];
             }
             return View();
-        } 
+        }
 
         public async Task<IActionResult> GenerateRaffleBlock(int raffleid)
         {
@@ -143,19 +143,19 @@ namespace RaffleKing.Controllers
         [HttpPost]
         public async Task<IActionResult> updateRaffle(raffle raffle, IFormFile R_ThumbnailImage, IFormFile R_MainImage)
         {
-            using(var db = new RaffleContext())
+            using (var db = new RaffleContext())
             {
                 var ra = db.raffles.Find(raffle.ID);
 
-                if(R_ThumbnailImage == null)
+                if (R_ThumbnailImage == null)
                 {
-                    ra.R_MainImage =  ra.R_MainImage;
+                    ra.R_MainImage = ra.R_MainImage;
                 }
                 if (R_MainImage == null)
                 {
                     ra.R_ThumbnailImage = ra.R_ThumbnailImage;
                 }
-                if(R_ThumbnailImage != null)
+                if (R_ThumbnailImage != null)
                 {
                     var ThumbnailPath = "wwwroot/Images/" + R_ThumbnailImage.FileName;
                     var ThumbnailPathForDB = "/Images/" + R_ThumbnailImage.FileName;
@@ -175,17 +175,17 @@ namespace RaffleKing.Controllers
                     }
                     ra.R_MainImage = MainImagePathForDB;
                 }
-                
-                    ra.R_Title = raffle.R_Title;
-                    ra.R_TicketPrice = raffle.R_TicketPrice;
-                    ra.R_ShortDecription = raffle.R_ShortDecription;
-                    ra.R_FullDecription = raffle.R_FullDecription;
-                    ra.R_UniqueRaffleCode = raffle.R_UniqueRaffleCode;
 
-                    db.raffles.Update(ra);
+                ra.R_Title = raffle.R_Title;
+                ra.R_TicketPrice = raffle.R_TicketPrice;
+                ra.R_ShortDecription = raffle.R_ShortDecription;
+                ra.R_FullDecription = raffle.R_FullDecription;
+                ra.R_UniqueRaffleCode = raffle.R_UniqueRaffleCode;
 
-                    await db.SaveChangesAsync();
-                   
+                db.raffles.Update(ra);
+
+                await db.SaveChangesAsync();
+
             }
 
             return RedirectToAction("ViewRaffles", "Admin");
@@ -224,7 +224,7 @@ namespace RaffleKing.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> updateprofile(Profile profile )
+        public async Task<IActionResult> updateprofile(Profile profile)
         {
 
             using (var db = new RaffleContext())
@@ -233,16 +233,16 @@ namespace RaffleKing.Controllers
 
                 profiles.U_Name = profile.U_Name;
                 profiles.U_Phone = profile.U_Phone;
-                profiles.U_Email= profile.U_Email;
-                profiles.U_Password= profile.U_Password;
-                profiles.U_UserNameShortCode = profile.U_UserNameShortCode; 
+                profiles.U_Email = profile.U_Email;
+                profiles.U_Password = profile.U_Password;
+                profiles.U_UserNameShortCode = profile.U_UserNameShortCode;
 
                 db.profiles.Update(profiles);
 
                 await db.SaveChangesAsync();
-                TempData["Message"] = "Update Success"; 
+                TempData["Message"] = "Update Success";
             }
-            return Redirect("ViewUsers" ); 
+            return Redirect("ViewUsers");
         }
 
         public async Task<IActionResult> ViewRaffleBlock(int raffleid)
@@ -258,7 +258,7 @@ namespace RaffleKing.Controllers
                 ViewBag.raffleDetails = raffleDetails;
             }
             return View();
-        }  
+        }
         public async Task<IActionResult> AdminLogin()
         {
 
@@ -266,9 +266,9 @@ namespace RaffleKing.Controllers
         }
         [HttpPost]
         public async Task<IActionResult> AdminLogin(string email, string password)
-        { 
+        {
             using (var db = new RaffleContext())
-            { 
+            {
                 var checkExists = db.profiles.Where(c => c.U_Email == email && c.U_Password == password && c.U_RoleType == "admin").FirstOrDefault();
 
                 if (checkExists != null)
@@ -309,20 +309,20 @@ namespace RaffleKing.Controllers
             {
                 var raffle = db.raffles.Where(c => c.ID == raffleid).FirstOrDefault();
                 var raffleDetails = db.raffleDetails.Where(c => c.RD_Raffle_Id == raffleid).ToList();
-                if(raffleDetails.Count != 0)
+                if (raffleDetails.Count != 0)
                 {
-                    foreach(var v in raffleDetails)
+                    foreach (var v in raffleDetails)
                     {
                         db.raffleDetails.Remove(v);
-                    } 
+                    }
                     db.raffles.Remove(raffle);
                 }
                 else
                 {
                     db.raffles.Remove(raffle);
-                } 
-                 await db.SaveChangesAsync();
-                 TempData["Message"] = "Deleted Success";
+                }
+                await db.SaveChangesAsync();
+                TempData["Message"] = "Deleted Success";
 
             }
             return RedirectToAction("ViewRaffles", "Admin");
@@ -358,5 +358,40 @@ namespace RaffleKing.Controllers
             return RedirectToAction("ViewUsers", "Admin");
 
         }
+
+
+        public async Task<IActionResult> CartDetails()
+        {
+
+            using (var db = new RaffleContext())
+            {
+                var cartdetails = db.Carts.ToList();
+                foreach(var cart in cartdetails)
+                {
+                    var s = db.raffleDetails.Find(cart.blockid);
+                    cart.blockid = s.RD_Raffle_block;
+                }
+                ViewBag.cartdetails = cartdetails;
+            }
+
+            return View();
+        }
+
+        public async Task<IActionResult> EditCart(int cartid)
+        {
+            using (var db = new RaffleContext())
+            {
+                var crt = db.Carts.Find(cartid);
+
+                var user = db.profiles.Where(C => C.Id == crt.User_id).FirstOrDefault();
+                crt.winnerName = user.U_Name;
+
+                db.Carts.Update(crt);
+
+                await db.SaveChangesAsync();
+            }
+            return RedirectToAction("CartDetails", "Admin");
+        }
+
     }
 }

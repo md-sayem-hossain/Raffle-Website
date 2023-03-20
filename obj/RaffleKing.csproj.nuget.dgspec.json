@@ -1,23 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "F:\\Raffle-Website\\RaffleKing.csproj": {}
+    "E:\\PENDRIVE BACKUP\\Raffle-Website\\RaffleKing.csproj": {}
   },
   "projects": {
-    "F:\\Raffle-Website\\RaffleKing.csproj": {
+    "E:\\PENDRIVE BACKUP\\Raffle-Website\\RaffleKing.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Raffle-Website\\RaffleKing.csproj",
+        "projectUniqueName": "E:\\PENDRIVE BACKUP\\Raffle-Website\\RaffleKing.csproj",
         "projectName": "RaffleKing",
-        "projectPath": "F:\\Raffle-Website\\RaffleKing.csproj",
-        "packagesPath": "C:\\Users\\sayem.hossain\\.nuget\\packages\\",
-        "outputPath": "F:\\Raffle-Website\\obj\\",
+        "projectPath": "E:\\PENDRIVE BACKUP\\Raffle-Website\\RaffleKing.csproj",
+        "packagesPath": "C:\\Users\\Sayem\\.nuget\\packages\\",
+        "outputPath": "E:\\PENDRIVE BACKUP\\Raffle-Website\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\sayem.hossain\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Sayem\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -67,7 +64,7 @@
             },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
-              "version": "[6.0.12, )"
+              "version": "[6.0.13, )"
             },
             "bootstrap": {
               "target": "Package",
@@ -101,7 +98,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     }

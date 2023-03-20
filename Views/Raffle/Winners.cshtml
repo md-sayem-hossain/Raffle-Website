@@ -16,17 +16,32 @@
                         <th>Raffle Name</th>
                         <th>Ticket No</th>
                         <th>Winner Name</th>
+                        <th>Country</th>
                         <th>Drawn At</th> 
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td> 
-                        <td>1</td> 
-                        <td>1</td> 
-                        <td>1</td> 
-                        <td>1</td> 
-                    </tr> 
+                    @{
+
+                        if (ViewBag.winners != null)
+                        {
+                            var l = 1;
+                            foreach (var v in ViewBag.winners)
+                            {
+                                <tr>
+                                    <td>@l</td>
+                                    <td>@v.RaffleName</td>
+                                    <td>@v.TIcketNo</td>
+                                    <td>@v.WinnerName</td>
+                                    <td>@v.Country</td>
+                                    <td>@v.DrawnAt.ToString("dd-MMM-yyyy")</td>
+                                </tr>
+                                l = l +1;
+                            }
+                           
+                        }
+                    }
+                   
                 </tbody>
                 <tfoot>
                     <tr>

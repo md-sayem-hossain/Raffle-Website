@@ -12,8 +12,12 @@
 		margin-top: 10px !important;
 	}
 
+	.text_checkbox.applied {
+		background: #ea4c4c !important;
+		color: white !important;
+	}
 	.text-nicelabel:not(:checked) + label {
-		width: 7.25rem;
+		width: 8.25rem;
 		/*background-color: #e9e9e9;*/
 		color: #a7a7a7;
 		/*border: 1px solid #dbdbdba6;*/
@@ -21,15 +25,15 @@
 	}
 
 	.text-nicelabel:checked + label {
-		width: 7.25rem;
+		width: 8.25rem;
 	}
 </style>
-<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
-	<div class="col-md-5 p-lg-5 mx-auto my-5">
+<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light" style="background:linear-gradient(0deg, rgba(0, 0, 0, 0.33), rgba(0, 0, 0, 0.78)), url('@Url.Content(@Raffle.R_MainImage)')  ; background-size:cover;">
+	<div class="col-md-5 p-lg-5 mx-auto my-5" style="color: white !important;">
 		<h1 class="display-4 fw-normal" style="    font-size: 2.5rem; font-weight: 600 !important;">@Raffle.R_Title </h1>
 		<p class="lead fw-normal">@Raffle.R_ShortDecription</p>
 		<p class="lead fw-normal">Drawn at @Raffle.R_DrawnAt</p>
-		<a class="btn btn-outline-secondary" href="#">Browse More</a>
+		<a class="btn btn-outline-secondary" href="#" style="color: white !important; border: 1px solid white;">Browse More</a>
 	</div> 
 </div>
 <div class="container col-xxl-8 px-4 py-5">
@@ -39,7 +43,7 @@
       </div>
       <div class="col-lg-6">
 			<h1 class="display-5 fw-bold lh-1 mb-3">@Raffle.R_Title</h1>
-			<h3 class="display-5   lh-1 mb-3" style="font-size: 2rem;">Only for <span class=" fw-bold" style="color: rebeccapurple">@Raffle.R_TicketPrice$</span></h3>
+			<h3 class="display-5   lh-1 mb-3" style="font-size: 2rem;">Only for <span class=" fw-bold" style="color: rebeccapurple">@Raffle.R_TicketPrice R</span></h3>
         <p class="lead" style="text-align: justify; font-size: 1rem;">
 				@Raffle.R_FullDecription
 		</p>
@@ -68,7 +72,7 @@
 							}
 							else
 							{
-								<input class="text-nicelabel" readonly value="@v.Id @v.RD_BookedBy" data-nicelabel='{"position_class": "text_checkbox", "checked_text": "@v.RD_Raffle_block @v.RD_BookedBy", "unchecked_text": "@v.RD_Raffle_block @v.RD_BookedBy"}' type="checkbox" />
+								<input class="text-nicelabel" disabled value="@v.Id @v.RD_BookedBy" data-nicelabel='{"position_class": "text_checkbox applied", "checked_text": "@v.RD_Raffle_block @v.RD_BookedBy", "unchecked_text": "@v.RD_Raffle_block @v.RD_BookedBy"}' type="checkbox" />
 							}
 						}
 						//var see = RaffleDetails.R_Total_Available + RaffleDetails.R_Total_Booked;

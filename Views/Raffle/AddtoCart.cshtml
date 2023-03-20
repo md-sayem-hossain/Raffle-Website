@@ -7,6 +7,7 @@
     var singleCost = ViewBag.singleCost;
     var blockids = ViewBag.blockids ;
     var raffleid =ViewBag.raffleid ;
+   // Layout = null;
 }
 
   <div class="container">
@@ -46,14 +47,15 @@
     </div>
     <div class="col-md-8 order-md-1">
       <h4 class="mb-3">Billing address</h4>
-        <form class="needs-validation" novalidate method="post" action="AddtoCartSuccess">
+        <form class="needs-validation" method="post" action="AddtoCartSuccess">
         <div class="row">
           <div class="col-md-12 mb-3">
             <label for="firstName">First name</label>
                  <input type="text" class="form-control" id="U_Name" placeholder="" name="U_Name" value="@user.U_Name" readonly>
                         <input type="hidden" class="form-control" id="Id" placeholder="" name="Id" value="@user.Id">
                         <input type="hidden" class="form-control" id="blockids" placeholder="" name="blockids" value="@blockids">
-                        <input type="hidden" class="form-control" id="raffleid" placeholder="" name="raffleid" value="@raffleid">                       <div class="invalid-feedback">
+                        <input type="hidden" class="form-control" id="raffleid" placeholder="" name="raffleid" value="@raffleid">
+                       <div class="invalid-feedback">
               Valid first name is required.
             </div>
           </div> 
@@ -64,8 +66,8 @@
             <div class="input-group-prepend">
               <span class="input-group-text">@@</span>
             </div>
-                 <input type="text" class="form-control" id="U_UserNameShortCode" placeholder="" name="U_UserNameShortCode" value="@user.U_UserNameShortCode" readonly>
-            <div class="invalid-feedback" style="width: 100%;">
+                        <input type="text" class="form-control" id="U_UserNameShortCode"  required placeholder="" name="U_UserNameShortCode" value="@user.U_UserNameShortCode" readonly>
+            <div class="invalid-feedback" style="width: 100%;" >
               Your username is required.
             </div>
           </div>
@@ -73,7 +75,7 @@
 
         <div class="mb-3">
           <label for="email">Email  </label>
-                    <input type="email" class="form-control" id="U_Email" placeholder="" name="U_Email" value="@user.U_Email" readonly>
+                    <input type="email" class="form-control" id="U_Email" placeholder="" name="U_Email" value="@user.U_Email" readonly required="true">
           <div class="invalid-feedback">
             Please enter a valid email address for shipping updates.
           </div>
@@ -81,7 +83,7 @@
 
         <div class="mb-3">
                     <label for="Baddress">Address</label>
-                    <input type="text" class="form-control" id="Baddress" name="Baddress" placeholder="1234 Main St" required>
+                    <input type="text" class="form-control" id="Baddress" name="Baddress" placeholder="1234 Main St" required="true">
           <div class="invalid-feedback">
             Please enter your shipping address.
           </div>
@@ -91,7 +93,7 @@
         <div class="row">
           <div class="col-md-5 mb-3">
             <label for="country">Country</label>
-                        <input type="text" class="form-control" id="country" name="country" placeholder="" required>
+                        <input type="text" class="form-control" id="country" name="country" placeholder="" required="true">
 
             <div class="invalid-feedback">
               Please select a valid country.
@@ -99,7 +101,7 @@
           </div>
           <div class="col-md-4 mb-3">
             <label for="state">State</label>
-                        <input type="text" class="form-control" id="state" name="state" placeholder="" required>
+                        <input type="text" class="form-control" id="state" name="state" placeholder="" required="true">
 
             <div class="invalid-feedback">
               Please provide a valid state.
@@ -107,7 +109,7 @@
           </div>
           <div class="col-md-3 mb-3">
             <label for="zip">Zip</label>
-                        <input type="text" class="form-control" id="zip" name="zip" placeholder="" required>
+                        <input type="text" class="form-control" id="zip" name="zip" placeholder="" required="true">
             <div class="invalid-feedback">
               Zip code required.
             </div>
@@ -119,22 +121,26 @@
 
         <div class="d-block my-3">
           <div class="custom-control custom-radio">
-            <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked required>
+                        <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked required="true">
             <label class="custom-control-label" for="credit">Credit card</label>
           </div>
           <div class="custom-control custom-radio">
-            <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" required>
+                        <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" required="true">
             <label class="custom-control-label" for="debit">Debit card</label>
           </div>
           <div class="custom-control custom-radio">
-            <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" required>
+                        <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" required="true">
             <label class="custom-control-label" for="paypal">PayPal</label>
+          </div>
+          <div class="custom-control custom-radio">
+                        <input id="eft" name="paymentMethod" type="radio" class="custom-control-input" required="true">
+             <label class="custom-control-label" for="eft">EFT Payment</label>
           </div>
         </div>
         <div class="row">
           <div class="col-md-6 mb-3">
             <label for="cc-name">Name on card</label>
-                        <input type="text" class="form-control" name="cc_name" id="cc_name" placeholder="" required>
+                        <input type="text" class="form-control" name="cc_name" id="cc_name" placeholder="" required="true">
             <small class="text-muted">Full name as displayed on card</small>
             <div class="invalid-feedback">
               Name on card is required
@@ -142,7 +148,7 @@
           </div>
           <div class="col-md-6 mb-3">
             <label for="cc-number">Credit card number</label>
-                        <input type="text" class="form-control" id="cc_number" name="cc_number" placeholder="0000 0000 0000 0000" required>
+                        <input type="text" class="form-control" id="cc_number" name="cc_number" placeholder="105 114 8448" required="true">
             <div class="invalid-feedback">
               Credit card number is required
             </div>
@@ -151,14 +157,14 @@
         <div class="row">
           <div class="col-md-3 mb-3">
             <label for="cc-expiration">Expiration</label>
-                        <input type="text" class="form-control" id="cc_expiration" name="cc_expiration" placeholder="00/00" required>
+                        <input type="text" class="form-control" id="cc_expiration" name="cc_expiration" maxlength="5" placeholder="00/00" required="true">
             <div class="invalid-feedback">
               Expiration date required
             </div>
           </div>
           <div class="col-md-3 mb-3">
             <label for="cc-cvv">CVV</label>
-                        <input type="text" class="form-control" name="cc_cvv" id="cc_cvv" placeholder="000" required>
+                        <input type="text" class="form-control" name="cc_cvv" id="cc_cvv" maxlength="3" placeholder="000" required="true">
             <div class="invalid-feedback">
               Security code required
             </div>
