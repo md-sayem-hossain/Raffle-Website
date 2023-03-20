@@ -118,10 +118,18 @@
         <hr class="mb-4">  
 
         <h4 class="mb-3">Payment</h4>
-
+        <style>
+                    .is-hidden {
+                        display: none;
+                    }
+        </style>
         <div class="d-block my-3">
+                    <div class="custom-control custom-radio">
+                        <input id="eft" name="paymentMethod" type="radio" class="custom-control-input" required="true"  checked>
+                        <label class="custom-control-label" for="eft">EFT Payment</label>
+                    </div>
           <div class="custom-control custom-radio">
-                        <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked required="true">
+                        <input id="credit" name="paymentMethod" type="radio" class="custom-control-input"  required="true">
             <label class="custom-control-label" for="credit">Credit card</label>
           </div>
           <div class="custom-control custom-radio">
@@ -132,44 +140,70 @@
                         <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" required="true">
             <label class="custom-control-label" for="paypal">PayPal</label>
           </div>
-          <div class="custom-control custom-radio">
-                        <input id="eft" name="paymentMethod" type="radio" class="custom-control-input" required="true">
-             <label class="custom-control-label" for="eft">EFT Payment</label>
-          </div>
+          
         </div>
-        <div class="row">
-          <div class="col-md-6 mb-3">
-            <label for="cc-name">Name on card</label>
-                        <input type="text" class="form-control" name="cc_name" id="cc_name" placeholder="" required="true">
-            <small class="text-muted">Full name as displayed on card</small>
-            <div class="invalid-feedback">
-              Name on card is required
-            </div>
-          </div>
-          <div class="col-md-6 mb-3">
-            <label for="cc-number">Credit card number</label>
-                        <input type="text" class="form-control" id="cc_number" name="cc_number" placeholder="105 114 8448" required="true">
-            <div class="invalid-feedback">
-              Credit card number is required
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-3 mb-3">
-            <label for="cc-expiration">Expiration</label>
-                        <input type="text" class="form-control" id="cc_expiration" name="cc_expiration" maxlength="5" placeholder="00/00" required="true">
-            <div class="invalid-feedback">
-              Expiration date required
-            </div>
-          </div>
-          <div class="col-md-3 mb-3">
-            <label for="cc-cvv">CVV</label>
-                        <input type="text" class="form-control" name="cc_cvv" id="cc_cvv" maxlength="3" placeholder="000" required="true">
-            <div class="invalid-feedback">
-              Security code required
-            </div>
-          </div>
-        </div>
+
+                <div id="content1">  
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="cc-name">Bank Name</label>
+                            <input type="text" class="form-control" name="eft_name" id="eft_name" placeholder="" value="MERCANTILE BANK" readonly required="true">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="cc-number">Card number</label>
+                            <input type="text" class="form-control" id="eft_number" name="eft_number" readonly value="105 1148448" required="true">
+                        </div>
+                    </div>
+                    <div class="row" >
+                        <div class="col-md-6 mb-3">
+                            <label for="cc-expiration">Branch Code</label>
+                            <input type="text" class="form-control" id="eft_branch" name="eft_branch"  readonly value="450105" required="true">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="cc-cvv">Reference</label>
+                            <input type="text" class="form-control" name="eft_reference" id="eft_reference" placeholder="000" value="@user.U_UserNameShortCode / @user.U_Name" readonly required="true">
+                        </div>
+                    </div>   
+                </div>
+
+                <div id="content2">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="cc-name">Name on card</label>
+                            <input type="text" class="form-control" name="cc_name" id="cc_name" placeholder="" required="true">
+                            <small class="text-muted">Full name as displayed on card</small>
+                            <div class="invalid-feedback">
+                                Name on card is required
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="cc-number">Credit card number</label>
+                            <input type="text" class="form-control" id="cc_number" name="cc_number" placeholder="105 114 8448" required="true">
+                            <div class="invalid-feedback">
+                                Credit card number is required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 mb-3">
+                            <label for="cc-expiration">Expiration</label>
+                            <input type="text" class="form-control" id="cc_expiration" name="cc_expiration" maxlength="5" placeholder="00/00" required="true">
+                            <div class="invalid-feedback">
+                                Expiration date required
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label for="cc-cvv">CVV</label>
+                            <input type="text" class="form-control" name="cc_cvv" id="cc_cvv" maxlength="3" placeholder="000" required="true">
+                            <div class="invalid-feedback">
+                                Security code required
+                            </div>
+                        </div>
+                    </div>  
+                </div> 
+
+
+                    
         <hr class="mb-4">
         <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
       </form>
@@ -177,3 +211,35 @@
   </div>
    
 </div>
+
+    <script>
+    const elToggle = document.querySelector("#eft");
+    const elToggle2 = document.querySelector("#credit");
+    const elToggle3 = document.querySelector("#debit");
+    const elToggle4 = document.querySelector("#paypal");
+    const elContent1 = document.querySelector("#content1");
+    const elContent2 = document.querySelector("#content2");
+    elContent2.classList.add("is-hidden");
+    elToggle.addEventListener("click", function () {
+        elContent1.classList.remove("is-hidden");
+        elContent2.classList.add("is-hidden");
+
+        document.getElementById("cc_name").value = "none";
+        document.getElementById("cc_number").value = "none";
+        document.getElementById("cc_expiration").value = "none";
+        document.getElementById("cc_cvv").value = "none";
+
+    });
+    elToggle2.addEventListener("click", function () {
+        elContent1.classList.add("is-hidden");
+        elContent2.classList.remove("is-hidden");  
+    });
+    elToggle3.addEventListener("click", function () {
+        elContent1.classList.add("is-hidden");
+        elContent2.classList.remove("is-hidden");
+    });
+    elToggle4.addEventListener("click", function () {
+        elContent1.classList.add("is-hidden");
+        elContent2.classList.remove("is-hidden");
+    });
+            </script>

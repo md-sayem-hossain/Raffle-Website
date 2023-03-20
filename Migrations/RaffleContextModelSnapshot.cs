@@ -57,6 +57,22 @@ namespace RaffleKing.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("eft_branch")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("eft_name")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("eft_number")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("eft_reference")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.Property<int>("raffleid")
                         .HasColumnType("INTEGER");
 
