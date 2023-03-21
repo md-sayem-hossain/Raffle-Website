@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121.
+-->
+<Project>
+  <PropertyGroup>
+    <_PublishTargetUrl>C:\Users\louis\Downloads\Raffle-Website\bin\Release\net7.0\publish\</_PublishTargetUrl>
+    <History>True|2023-03-21T13:35:37.9899898Z;False|2023-03-21T15:34:51.2639237+02:00;True|2023-03-21T15:33:19.8301422+02:00;</History>
+    <LastFailureDetails />
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="Kestrel:Certificates:Development:Password">
+      <Value>4b6fdc8d-d086-4630-804c-7dfa3de937d8</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+</Project>
