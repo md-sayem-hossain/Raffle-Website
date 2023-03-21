@@ -331,11 +331,20 @@ namespace RaffleKing.Controllers
             {
                 var raffle = db.raffles.Where(c => c.ID == raffleid).FirstOrDefault();
                 var raffleDetails = db.raffleDetails.Where(c => c.RD_Raffle_Id == raffleid).ToList();
+                var carts = db.Carts.Where(c => c.raffleid == raffleid).ToList();
                 if (raffleDetails.Count != 0)
                 {
                     foreach (var v in raffleDetails)
                     {
                         db.raffleDetails.Remove(v);
+                    }
+                    db.raffles.Remove(raffle);
+                }
+                if (carts.Count != 0)
+                {
+                    foreach (var s in carts)
+                    {
+                        db.Carts.Remove(s);
                     }
                     db.raffles.Remove(raffle);
                 }
@@ -361,11 +370,20 @@ namespace RaffleKing.Controllers
             {
                 var profile = db.profiles.Where(c => c.Id == UserID).FirstOrDefault();
                 var raffleDetails = db.raffleDetails.Where(c => c.RD_User_Id == UserID).ToList();
+                var carts = db.Carts.Where(c => c.User_id == UserID).ToList();
                 if (raffleDetails.Count != 0)
                 {
                     foreach (var v in raffleDetails)
                     {
                         db.raffleDetails.Remove(v);
+                    }
+                    db.profiles.Remove(profile);
+                }
+                if (carts.Count != 0)
+                {
+                    foreach (var s in carts)
+                    {
+                        db.Carts.Remove(s);
                     }
                     db.profiles.Remove(profile);
                 }
