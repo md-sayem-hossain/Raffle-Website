@@ -63,7 +63,6 @@ namespace RaffleKing.Controllers
             raffle.R_MainImage = MainImagePathForDB;
             raffle.R_BlockGenerated = false;
             raffle.R_Active = true;
-            //for image upload end
 
             await _db.raffles.AddAsync(raffle);
             await _db.SaveChangesAsync();
@@ -125,7 +124,7 @@ namespace RaffleKing.Controllers
 
 
         public async Task<IActionResult> EditRaffle(int raffleid)
-        {
+         {
             var user = HttpContext.Session.GetString("UserShortCode");
             if (user == null)
             {
@@ -139,6 +138,29 @@ namespace RaffleKing.Controllers
             return View();
         }
 
+        public async Task<IActionResult> ChangeRaffleStatus(int raffleid)
+        {
+            var user = HttpContext.Session.GetString("UserShortCode");
+            if (user == null)
+            {
+                return RedirectToAction("AdminLogin", "Admin");
+            }
+            using (var db = new RaffleContext())
+            {
+                var raffle = db.raffles.Find(raffleid);
+                if(raffle.R_Active == false)
+                {
+                    raffle.R_Active = true;
+                }
+                else
+                {
+                    raffle.R_Active = false;
+                } 
+                db.raffles.Update(raffle);
+                await db.SaveChangesAsync();
+            }
+            return RedirectToAction("ViewRaffles", "Admin");
+        }
 
         [HttpPost]
         public async Task<IActionResult> updateRaffle(raffle raffle, IFormFile R_ThumbnailImage, IFormFile R_MainImage)
@@ -309,11 +331,20 @@ namespace RaffleKing.Controllers
             {
                 var raffle = db.raffles.Where(c => c.ID == raffleid).FirstOrDefault();
                 var raffleDetails = db.raffleDetails.Where(c => c.RD_Raffle_Id == raffleid).ToList();
+                var carts = db.Carts.Where(c => c.raffleid == raffleid).ToList();
                 if (raffleDetails.Count != 0)
                 {
                     foreach (var v in raffleDetails)
                     {
                         db.raffleDetails.Remove(v);
+                    }
+                    db.raffles.Remove(raffle);
+                }
+                if (carts.Count != 0)
+                {
+                    foreach (var s in carts)
+                    {
+                        db.Carts.Remove(s);
                     }
                     db.raffles.Remove(raffle);
                 }
@@ -339,11 +370,20 @@ namespace RaffleKing.Controllers
             {
                 var profile = db.profiles.Where(c => c.Id == UserID).FirstOrDefault();
                 var raffleDetails = db.raffleDetails.Where(c => c.RD_User_Id == UserID).ToList();
+                var carts = db.Carts.Where(c => c.User_id == UserID).ToList();
                 if (raffleDetails.Count != 0)
                 {
                     foreach (var v in raffleDetails)
                     {
                         db.raffleDetails.Remove(v);
+                    }
+                    db.profiles.Remove(profile);
+                }
+                if (carts.Count != 0)
+                {
+                    foreach (var s in carts)
+                    {
+                        db.Carts.Remove(s);
                     }
                     db.profiles.Remove(profile);
                 }

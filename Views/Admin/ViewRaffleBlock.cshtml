@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="~/admin-assets/assets/vendors/css/vendor.bundle.base.css">
     <link href="~/admin-assets/assets/css/style.css" rel="stylesheet" />
     <link rel="shortcut icon" href="~/admin-assets/assets/images/favicon.ico" />
+    <link href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+
     <style>
         .badge {
             margin-right: 20px;
@@ -189,7 +191,7 @@
                                 <div class="card-body">
                                     <h4 class="card-title">Recent Raffles</h4>
                                     <div class="table-responsive">
-                                        <table class="table">
+                                        <table class="table" id="example">
                                             <thead>
                                                 <tr> 
                                                     <th> # </th>
@@ -243,6 +245,12 @@
     <script src="~/admin-assets/assets/js/hoverable-collapse.js"></script>
     <script src="~/admin-assets/assets/js/misc.js"></script>
     <script src="~/admin-assets/assets/js/file-upload.js"></script>
-
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#example').DataTable();
+        });
+    </script>
 </body>
 </html>

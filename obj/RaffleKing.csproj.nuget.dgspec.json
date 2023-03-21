@@ -1,20 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "E:\\PENDRIVE BACKUP\\Raffle-Website\\RaffleKing.csproj": {}
+    "E:\\Raffle-Website\\RaffleKing.csproj": {}
   },
   "projects": {
-    "E:\\PENDRIVE BACKUP\\Raffle-Website\\RaffleKing.csproj": {
+    "E:\\Raffle-Website\\RaffleKing.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\PENDRIVE BACKUP\\Raffle-Website\\RaffleKing.csproj",
+        "projectUniqueName": "E:\\Raffle-Website\\RaffleKing.csproj",
         "projectName": "RaffleKing",
-        "projectPath": "E:\\PENDRIVE BACKUP\\Raffle-Website\\RaffleKing.csproj",
-        "packagesPath": "C:\\Users\\Sayem\\.nuget\\packages\\",
-        "outputPath": "E:\\PENDRIVE BACKUP\\Raffle-Website\\obj\\",
+        "projectPath": "E:\\Raffle-Website\\RaffleKing.csproj",
+        "packagesPath": "C:\\Users\\sayem.hossain\\.nuget\\packages\\",
+        "outputPath": "E:\\Raffle-Website\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Sayem\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\sayem.hossain\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -98,7 +101,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     }

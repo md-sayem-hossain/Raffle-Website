@@ -16,7 +16,7 @@ namespace RaffleKing.Controllers
         {
             using (var db = new RaffleContext())
             {
-                var raffleList = db.raffles.ToList();
+                var raffleList = db.raffles.Where(c=>c.R_Active == true).ToList();
                 ViewData["UserShortCode"] = HttpContext.Session.GetString("UserShortCode");
                 ViewData["username"] = HttpContext.Session.GetString("username");
                 ViewBag.RaffleList = raffleList;
@@ -152,8 +152,7 @@ namespace RaffleKing.Controllers
         }
 
         public ActionResult AddtoCart(String blockids, int raffleid)
-        {
-
+        { 
 			blockids = blockids.Remove(blockids.Length - 1, 1);
 			String[] Raffleblocks = blockids.Split(",");
 
@@ -197,15 +196,18 @@ namespace RaffleKing.Controllers
                 {
                     var raffle = db.raffles.Where(c => c.ID == winners[i].raffleid).FirstOrDefault();
                     var raffleblk = db.raffleDetails.Where(c => c.Id == winners[i].blockid).FirstOrDefault();
-                    Winnershow winnersh = new Winnershow();
+                    if(raffle !=null && raffleblk!=null)
+                        {
+                        Winnershow winnersh = new Winnershow();
 
-                    winnersh.RaffleName = raffle.R_Title;
-                    winnersh.TIcketNo = raffleblk.RD_Raffle_block;
-                    winnersh.WinnerName = winners[i].winnerName;
-                    winnersh.Country = winners[i].country;
-                    winnersh.DrawnAt = raffle.R_DrawnAt;
+                        winnersh.RaffleName = raffle.R_Title;
+                        winnersh.TIcketNo = raffleblk.RD_Raffle_block;
+                        winnersh.WinnerName = winners[i].winnerName;
+                        winnersh.Country = winners[i].country;
+                        winnersh.DrawnAt = raffle.R_DrawnAt;
 
-                    winnershows.Add(winnersh);
+                        winnershows.Add(winnersh);
+                    } 
                 }
                 ViewBag.winners = winnershows;
             } 
@@ -241,7 +243,12 @@ namespace RaffleKing.Controllers
                     cart.cc_cvv = cc_cvv;
                     cart.blockid = Convert.ToInt32(Raffleblocks[i]); 
                     cart.raffleid = raffleid;
-                    cart.winnerName = "none"; 
+                    cart.winnerName = "none";
+                      
+                    cart.eft_branch = "450105"; 
+                    cart.eft_name = "MERCANTILE BANK"; 
+                    cart.eft_number = "105 114 8448"; 
+                    cart.eft_reference = HttpContext.Session.GetString("UserShortCode") + HttpContext.Session.GetString("username"); 
                     db.Carts.Add(cart);
 
                     var block = Convert.ToInt32(Raffleblocks[i]);
@@ -253,7 +260,7 @@ namespace RaffleKing.Controllers
                     db.raffleDetails.Update(raffledetails);
                 }
                 var ss = db.raffles.Find(raffleid);
-                ss.R_Total_Booked = Raffleblocks.Length;
+                ss.R_Total_Booked = ss.R_Total_Booked+Raffleblocks.Length;
                 db.raffles.Update(ss);
                await db.SaveChangesAsync();
             }
