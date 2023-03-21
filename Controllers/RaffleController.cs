@@ -216,10 +216,9 @@ namespace RaffleKing.Controllers
 
         [HttpPost]
         public async Task<ActionResult> AddtoCartSuccess(string Baddress, string country, string state,
-            string zip, string cc_name, string cc_number, string cc_expiration, string cc_cvv, string blockids,
-            int raffleid, string U_Email)
+            string zip, string cc_name = "none", string cc_number = "none", string cc_expiration = "none", string cc_cvv = "none", string blockids = "none",
+            int raffleid = 0, string U_Email = "none")
         {
-            
             string[] Raffleblocks = blockids.Split(",");
             
             using (var db = new RaffleContext())
