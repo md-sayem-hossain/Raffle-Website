@@ -1,30 +1,29 @@
-﻿ 
-@{
+﻿@{
     var raffleDetails = ViewBag.raffleDetails;
     var user = ViewBag.user;
     var totalCost = ViewBag.totalCost;
-    var raffle = ViewBag.raffle; 
+    var raffle = ViewBag.raffle;
     var singleCost = ViewBag.singleCost;
-    var blockids = ViewBag.blockids ;
-    var raffleid =ViewBag.raffleid ;
-   // Layout = null;
+    var blockids = ViewBag.blockids;
+    var raffleid = ViewBag.raffleid;
+            // Layout = null;
 }
 
-  <div class="container">
-  <div class="py-5 text-center">
-    
-    <h2>Checkout</h2>
-   </div>
+<div class="container">
+    <div class="py-5 text-center">
 
-  <div class="row">
-    <div class="col-md-4 order-md-2 mb-4">
-      <h4 class="d-flex justify-content-between align-items-center mb-3">
-        <span class="text-muted">Your cart</span>
-        <span class="badge badge-secondary badge-pill">  </span>
-      </h4>
-      <ul class="list-group mb-3">
+        <h2>Checkout</h2>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4 order-md-2 mb-4">
+            <h4 class="d-flex justify-content-between align-items-center mb-3">
+                <span class="text-muted">Your cart</span>
+                <span class="badge badge-secondary badge-pill">  </span>
+            </h4>
+            <ul class="list-group mb-3">
                 @{
-                  var l = 1;
+                    var l = 1;
                     foreach (var raffled in raffleDetails)
                     {
                         <li class="list-group-item d-flex justify-content-between lh-condensed">
@@ -32,148 +31,148 @@
                                 <h6 class="my-0">Ticket Number #@l</h6>
                                 <small class="text-muted">@raffled.RD_Raffle_block</small>
                             </div>
-                            <span class="text-muted">@singleCost</span>
-                            </li>
-                            l = l + 1;
+                            <span class="text-muted">R @singleCost</span>
+                        </li>
+                        l = l + 1;
                     }
                 }
-                
-        <li class="list-group-item d-flex justify-content-between">
-          <span>Total (USD)</span>
-                <strong>$@totalCost</strong>
-        </li>
-      </ul>
-       
-    </div>
-    <div class="col-md-8 order-md-1">
-      <h4 class="mb-3">Billing address</h4>
-        <form class="needs-validation" method="post" action="AddtoCartSuccess">
-        <div class="row">
-          <div class="col-md-12 mb-3">
-            <label for="firstName">First name</label>
-                 <input type="text" class="form-control" id="U_Name" placeholder="" name="U_Name" value="@user.U_Name" readonly>
+
+                <li class="list-group-item d-flex justify-content-between">
+                    <span>Total (ZAR)</span>
+                    <strong>R @totalCost</strong>
+                </li>
+            </ul>
+
+        </div>
+        <div class="col-md-8 order-md-1">
+            <h4 class="mb-3">Billing address</h4>
+            <form class="needs-validation" method="post" action="AddtoCartSuccess">
+                <div class="row">
+                    <div class="col-md-12 mb-3">
+                        <label for="firstName">First name</label>
+                        <input type="text" class="form-control" id="U_Name" placeholder="" name="U_Name" value="@user.U_Name" readonly>
                         <input type="hidden" class="form-control" id="Id" placeholder="" name="Id" value="@user.Id">
                         <input type="hidden" class="form-control" id="blockids" placeholder="" name="blockids" value="@blockids">
                         <input type="hidden" class="form-control" id="raffleid" placeholder="" name="raffleid" value="@raffleid">
-                       <div class="invalid-feedback">
-              Valid first name is required.
-            </div>
-          </div> 
-        </div> 
-        <div class="mb-3">
-          <label for="username">Username</label>
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <span class="input-group-text">@@</span>
-            </div>
-                        <input type="text" class="form-control" id="U_UserNameShortCode"  required placeholder="" name="U_UserNameShortCode" value="@user.U_UserNameShortCode" readonly>
-            <div class="invalid-feedback" style="width: 100%;" >
-              Your username is required.
-            </div>
-          </div>
-        </div>
+                        <div class="invalid-feedback">
+                            Valid first name is required.
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="username">Username</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">@@</span>
+                        </div>
+                        <input type="text" class="form-control" id="U_UserNameShortCode" required placeholder="" name="U_UserNameShortCode" value="@user.U_UserNameShortCode" readonly>
+                        <div class="invalid-feedback" style="width: 100%;">
+                            Your username is required.
+                        </div>
+                    </div>
+                </div>
 
-        <div class="mb-3">
-          <label for="email">Email  </label>
+                <div class="mb-3">
+                    <label for="email">Email  </label>
                     <input type="email" class="form-control" id="U_Email" placeholder="" name="U_Email" value="@user.U_Email" readonly required="true">
-          <div class="invalid-feedback">
-            Please enter a valid email address for shipping updates.
-          </div>
-        </div>
+                    <div class="invalid-feedback">
+                        Please enter a valid email address for shipping updates.
+                    </div>
+                </div>
 
-        <div class="mb-3">
+                <div class="mb-3">
                     <label for="Baddress">Address</label>
                     <input type="text" class="form-control" id="Baddress" name="Baddress" placeholder="1234 Main St" required="true">
-          <div class="invalid-feedback">
-            Please enter your shipping address.
-          </div>
-        </div>
-          
+                    <div class="invalid-feedback">
+                        Please enter your shipping address.
+                    </div>
+                </div>
 
-        <div class="row">
-          <div class="col-md-5 mb-3">
-            <label for="country">Country</label>
+
+                <div class="row">
+                    <div class="col-md-5 mb-3">
+                        <label for="country">Country</label>
                         <input type="text" class="form-control" id="country" name="country" placeholder="" required="true">
 
-            <div class="invalid-feedback">
-              Please select a valid country.
-            </div>
-          </div>
-          <div class="col-md-4 mb-3">
-            <label for="state">State</label>
+                        <div class="invalid-feedback">
+                            Please select a valid country.
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="state">State</label>
                         <input type="text" class="form-control" id="state" name="state" placeholder="" required="true">
 
-            <div class="invalid-feedback">
-              Please provide a valid state.
-            </div>
-          </div>
-          <div class="col-md-3 mb-3">
-            <label for="zip">Zip</label>
+                        <div class="invalid-feedback">
+                            Please provide a valid state.
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label for="zip">Zip</label>
                         <input type="text" class="form-control" id="zip" name="zip" placeholder="" required="true">
-            <div class="invalid-feedback">
-              Zip code required.
-            </div>
-          </div>
-        </div>
-        <hr class="mb-4">  
+                        <div class="invalid-feedback">
+                            Zip code required.
+                        </div>
+                    </div>
+                </div>
+                <hr class="mb-4">
 
-        <h4 class="mb-3">Payment</h4>
+                <h4 class="mb-3">Payment</h4>
 
-        <div class="d-block my-3">
-          <div class="custom-control custom-radio">
+                <div class="d-block my-3">
+                    <div class="custom-control custom-radio">
                         <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked required="true">
-            <label class="custom-control-label" for="credit">Credit card</label>
-          </div>
-          <div class="custom-control custom-radio">
+                        <label class="custom-control-label" for="credit">Credit card</label>
+                    </div>
+                    <div class="custom-control custom-radio">
                         <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" required="true">
-            <label class="custom-control-label" for="debit">Debit card</label>
-          </div>
-          <div class="custom-control custom-radio">
+                        <label class="custom-control-label" for="debit">Debit card</label>
+                    </div>
+                    <div class="custom-control custom-radio">
                         <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" required="true">
-            <label class="custom-control-label" for="paypal">PayPal</label>
-          </div>
-          <div class="custom-control custom-radio">
+                        <label class="custom-control-label" for="paypal">PayPal</label>
+                    </div>
+                    <div class="custom-control custom-radio">
                         <input id="eft" name="paymentMethod" type="radio" class="custom-control-input" required="true">
-             <label class="custom-control-label" for="eft">EFT Payment</label>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6 mb-3">
-            <label for="cc-name">Name on card</label>
+                        <label class="custom-control-label" for="eft">EFT Payment</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="cc-name">Name on card</label>
                         <input type="text" class="form-control" name="cc_name" id="cc_name" placeholder="" required="true">
-            <small class="text-muted">Full name as displayed on card</small>
-            <div class="invalid-feedback">
-              Name on card is required
-            </div>
-          </div>
-          <div class="col-md-6 mb-3">
-            <label for="cc-number">Credit card number</label>
+                        <small class="text-muted">Full name as displayed on card</small>
+                        <div class="invalid-feedback">
+                            Name on card is required
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="cc-number">Credit card number</label>
                         <input type="text" class="form-control" id="cc_number" name="cc_number" placeholder="105 114 8448" required="true">
-            <div class="invalid-feedback">
-              Credit card number is required
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-3 mb-3">
-            <label for="cc-expiration">Expiration</label>
+                        <div class="invalid-feedback">
+                            Credit card number is required
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3 mb-3">
+                        <label for="cc-expiration">Expiration</label>
                         <input type="text" class="form-control" id="cc_expiration" name="cc_expiration" maxlength="5" placeholder="00/00" required="true">
-            <div class="invalid-feedback">
-              Expiration date required
-            </div>
-          </div>
-          <div class="col-md-3 mb-3">
-            <label for="cc-cvv">CVV</label>
+                        <div class="invalid-feedback">
+                            Expiration date required
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label for="cc-cvv">CVV</label>
                         <input type="text" class="form-control" name="cc_cvv" id="cc_cvv" maxlength="3" placeholder="000" required="true">
-            <div class="invalid-feedback">
-              Security code required
-            </div>
-          </div>
+                        <div class="invalid-feedback">
+                            Security code required
+                        </div>
+                    </div>
+                </div>
+                <hr class="mb-4">
+                <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
+            </form>
         </div>
-        <hr class="mb-4">
-        <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
-      </form>
     </div>
-  </div>
-   
+
 </div>

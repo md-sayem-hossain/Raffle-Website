@@ -37,6 +37,6 @@ void ConfigureServices(IServiceCollection services)
     //Set Session Timeout. Default is 20 minutes.
     services.AddSession(options =>
     {
-        options.IdleTimeout = TimeSpan.FromMinutes(30);
+        options.IdleTimeout = TimeSpan.FromDays(7);
     });
 }
