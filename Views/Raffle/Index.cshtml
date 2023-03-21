@@ -29,7 +29,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="booking-card-section">
-                    <h1 class="booking-card-h1">Tickets cards</h1>
+                    <h1 class="booking-card-h1">Current Raffles</h1>
                     <div class="row row-cols-1 row-cols-md-3 g-4">
                         <style>
                             .buttonA a {
@@ -47,7 +47,6 @@
                                             <h2 class="title">
                                                 @raf.R_Title
                                             </h2>
-                                            <p class="sub-title">Will drawn at <b>@raf.R_DrawnAt.ToString("dd MMM yyyy")</b> </p>
                                             <p class="price">
                                                 <svg class="icon" style="width:24px;height:24px" viewBox="0 0 24 24">
                                                     <path fill="currentColor" d="M3,6H21V18H3V6M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9M7,8A2,2 0 0,1 5,10V14A2,2 0 0,1 7,16H17A2,2 0 0,1 19,14V10A2,2 0 0,1 17,8H7Z" />
@@ -71,7 +70,7 @@
                                                 <p class="disclaimer">@raf.R_ShortDecription</p>
                                                 <div class="book-container ">
                                                     <div class="content">
-                                                        <a class="btn buttonA" href="@Url.ActionLink("RaffelDetailView", "Raffle", new {id = @raf.ID})">Reserve</a>
+                                                        <a class="btn buttonA" href="@Url.ActionLink("RaffleDetailView", "Raffle", new {id = @raf.ID})">Reserve</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -101,7 +100,7 @@
             <div class="col-md-6">
                 <div class="h-100 p-5">
                     <h2>Love raffles? </h2>
-                    <p>You'll love the RaffleTix Insiders Weekly Newsletter</p>
+                    <p>Want to be part of our monthly newsletter</p>
                     <div class="input-group mb-3 mt-4">
                         <input type="text" class="form-control" placeholder="Enter email" aria-label="Recipient's username" aria-describedby="button-addon2">
                         <button class="btn btn-success border-rad" type="button" id="button-addon2">Subscribe</button>
@@ -123,28 +122,28 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="recent__winner">
-                    <img src="~/Images/testimonials-1.jpg" />
-                    <h2>Emma Watson</h2>
+                    <img src="~/Images/Winners/Jacques van Wyk.jpeg" />
+                    <h2>Jacques van Wyk</h2>
                     <p>
-                        Common patterns for building sites and apps that build on existing components and utilities with custom CSS and more.
+                        Jagermeister Machine
                     </p>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="recent__winner">
-                    <img src="~/Images/testimonials-2.jpg" />
-                    <h2>John Dalton</h2>
+                    <img src="~/Images/Winners/Teanu Engelbrech.jpeg" />
+                    <h2>Teanu Engelbrech</h2>
                     <p>
-                        Common patterns for building sites and apps that build on existing components and utilities with custom CSS and more.
+                        Snowmaster Ice Machine
                     </p>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="recent__winner">
-                    <img src="~/Images/testimonials-3.jpg" />
-                    <h2>Alina Gomez</h2>
+                    <img src="~/Images/Winners/Victor Buckle.jpeg" />
+                    <h2>Victor Buckle</h2>
                     <p>
-                        Common patterns for building sites and apps that build on existing components and utilities with custom CSS and more.
+                        PS5 Console
                     </p>
                 </div>
             </div>

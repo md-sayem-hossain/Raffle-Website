@@ -30,8 +30,8 @@
     <div class="col-md-5 p-lg-5 mx-auto my-5" style="color: white !important;">
         <h1 class="display-4 fw-normal" style="    font-size: 2.5rem; font-weight: 600 !important;">@Raffle.R_Title </h1>
         <p class="lead fw-normal">@Raffle.R_ShortDecription</p>
-        <p class="lead fw-normal">Drawn at @Raffle.R_DrawnAt</p>
-        <a class="btn btn-outline-secondary" href="#" style="color: white !important; border: 1px solid white;">Browse More</a>
+        <p class="lead fw-normal">Draw will take place when ALL tickets are sold</p>
+        @*<a class="btn btn-outline-secondary" href="#" style="color: white !important; border: 1px solid white;">Browse More</a>*@
     </div>
 </div>
 <div class="container col-xxl-8 px-4 py-5">
@@ -46,7 +46,7 @@
                 @Raffle.R_FullDecription
             </p>
             <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-                <button type="button" class="btn btn-outline-secondary btn-lg px-4">More</button>
+                @*<button type="button" class="btn btn-outline-secondary btn-lg px-4">More</button>*@
             </div>
         </div>
     </div>
@@ -88,7 +88,7 @@
 
 <div class="bg-dark text-secondary px-4 py-5 text-center">
 	<div class="py-5">
-        <h1 class="display-5 fw-bold text-white"> <span id="count"></span> Selected = <span id="cost">00</span>$</h1>
+        <h1 class="display-5 fw-bold text-white"> <span id="count"></span> Selected = R<span id="cost">00</span></h1>
 		<div class="col-lg-12 mx-auto">
 			@*<p class="fs-5 mb-4">Selected tickets are: <br /> <span id="selected_box"></span></p>*@
 			<div class="d-grid gap-2 d-sm-flex justify-content-sm-center">

@@ -5,7 +5,7 @@
 namespace RaffleKing.Migrations
 {
     /// <inheritdoc />
-    public partial class imagetagaddedinraffels : Migration
+    public partial class imagetagaddedinraffles : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

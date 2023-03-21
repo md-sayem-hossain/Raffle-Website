@@ -117,7 +117,7 @@
                         <div class="collapse" id="general-pages">
                             <ul class="nav flex-column sub-menu">
                                 <li class="nav-item active">
-                                    @Html.ActionLink("Add Raffels", "AddRaffle", "Admin",null, new { @class= "nav-link"})
+                                    @Html.ActionLink("Add Raffles", "AddRaffle", "Admin",null, new { @class= "nav-link"})
                                 </li>
                                 <li class="nav-item">
                                     @Html.ActionLink("Raffle List", "ViewRaffles", "Admin",null, new { @class= "nav-link"})
@@ -186,6 +186,10 @@
                                             <label for="R_Title">Title</label>
                                             <input type="text" class="form-control" id="R_Title" name="R_Title" placeholder="Title" required value="@raffle.R_Title">
                                         </div> 
+                                        <div class="form-group">
+                                            <label for="R_DrawnAt">Will Drawn at</label>
+                                            <input type="date" class="form-control" id="R_DrawnAt" name="R_DrawnAt" placeholder="Drawn at" required value="@raffle.R_DrawnAt">
+                                        </div>
                                         <div class="form-group">
                                             <label for="R_TicketPrice">Per Ticket Price</label>
                                             <input type="number" class="form-control" id="R_TicketPrice" name="R_TicketPrice" placeholder="Ticket Price" required value="@raffle.R_TicketPrice">

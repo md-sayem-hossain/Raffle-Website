@@ -25,7 +25,7 @@ namespace RaffleKing.Controllers
         }
 
         [HttpGet]
-        public IActionResult RaffelDetailView(int id)
+        public IActionResult RaffleDetailView(int id)
         {
             using (var db = new RaffleContext())
             {
@@ -75,7 +75,6 @@ namespace RaffleKing.Controllers
 
         public async Task<IActionResult> Login()
         { 
-
             return View();
         }
 

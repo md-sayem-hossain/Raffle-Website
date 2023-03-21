@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "MyTickets";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -17,9 +16,9 @@
                     <tr>
                         <th>SL No</th>
                         <th>Raffle Name</th>
-                        <th>Ticket No</th>  
-                        <th>Price</th>  
-                        <th>Will Drawn At</th>
+                        <th>Ticket No</th>
+                        <th>Price</th>
+                        @*<th>Will Drawn At</th>*@
                     </tr>
                 </thead>
                 <tbody>
@@ -32,11 +31,9 @@
                             {
                                 <tr>
                                     <td>@l</td>
-                                     
                                     <td>@v.Raffle_Name</td>
                                     <td>@v.Ticket_No</td>
-                                    <td>@v.Price</td> 
-                                    <td>@v.Will_Drawn.ToString("dd-MMM-yyyy")</td>
+                                    <td>@v.Price</td>
                                 </tr>
                                 l = l + 1;
                             }
@@ -50,8 +47,8 @@
                         <th>SL No</th>
                         <th>Raffle Name</th>
                         <th>Ticket No</th>
-                        <th>Winner Name</th>
-                        <th>Drawn At</th>
+                        <th>Price</th>
+                        @*<th>Will Drawn At</th>*@
                     </tr>
                 </tfoot>
             </table>

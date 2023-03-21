@@ -11,8 +11,8 @@ using RaffleKing.Models;
 namespace RaffleKing.Migrations
 {
     [DbContext(typeof(RaffleContext))]
-    [Migration("20230304094311_image tag added in raffels")]
-    partial class imagetagaddedinraffels
+    [Migration("20230304094311_image tag added in raffles")]
+    partial class imagetagaddedinraffles
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
