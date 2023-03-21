@@ -1,35 +1,32 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Raffle-Website\\RaffleKing.csproj": {}
+    "C:\\Users\\louis\\Downloads\\Raffle-Website\\RaffleKing.csproj": {}
   },
   "projects": {
-    "E:\\Raffle-Website\\RaffleKing.csproj": {
+    "C:\\Users\\louis\\Downloads\\Raffle-Website\\RaffleKing.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Raffle-Website\\RaffleKing.csproj",
+        "projectUniqueName": "C:\\Users\\louis\\Downloads\\Raffle-Website\\RaffleKing.csproj",
         "projectName": "RaffleKing",
-        "projectPath": "E:\\Raffle-Website\\RaffleKing.csproj",
-        "packagesPath": "C:\\Users\\sayem.hossain\\.nuget\\packages\\",
-        "outputPath": "E:\\Raffle-Website\\obj\\",
+        "projectPath": "C:\\Users\\louis\\Downloads\\Raffle-Website\\RaffleKing.csproj",
+        "packagesPath": "C:\\Users\\louis\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\louis\\Downloads\\Raffle-Website\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\sayem.hossain\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\louis\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net6.0"
+          "net7.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net6.0": {
-            "targetAlias": "net6.0",
+          "net7.0": {
+            "targetAlias": "net7.0",
             "projectReferences": {}
           }
         },
@@ -40,8 +37,8 @@
         }
       },
       "frameworks": {
-        "net6.0": {
-          "targetAlias": "net6.0",
+        "net7.0": {
+          "targetAlias": "net7.0",
           "dependencies": {
             "Microsoft.AspNetCore.Session": {
               "target": "Package",
@@ -64,6 +61,14 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[7.0.3, )"
+            },
+            "Microsoft.NET.Build.Containers": {
+              "target": "Package",
+              "version": "[0.3.2, )"
+            },
+            "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": {
+              "target": "Package",
+              "version": "[1.17.2, )"
             },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
@@ -101,7 +106,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     }
