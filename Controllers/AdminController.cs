@@ -63,7 +63,6 @@ namespace RaffleKing.Controllers
             raffle.R_MainImage = MainImagePathForDB;
             raffle.R_BlockGenerated = false;
             raffle.R_Active = true;
-            //for image upload end
 
             await _db.raffles.AddAsync(raffle);
             await _db.SaveChangesAsync();
@@ -125,7 +124,7 @@ namespace RaffleKing.Controllers
 
 
         public async Task<IActionResult> EditRaffle(int raffleid)
-        {
+         {
             var user = HttpContext.Session.GetString("UserShortCode");
             if (user == null)
             {
@@ -139,6 +138,29 @@ namespace RaffleKing.Controllers
             return View();
         }
 
+        public async Task<IActionResult> ChangeRaffleStatus(int raffleid)
+        {
+            var user = HttpContext.Session.GetString("UserShortCode");
+            if (user == null)
+            {
+                return RedirectToAction("AdminLogin", "Admin");
+            }
+            using (var db = new RaffleContext())
+            {
+                var raffle = db.raffles.Find(raffleid);
+                if(raffle.R_Active == false)
+                {
+                    raffle.R_Active = true;
+                }
+                else
+                {
+                    raffle.R_Active = false;
+                } 
+                db.raffles.Update(raffle);
+                await db.SaveChangesAsync();
+            }
+            return RedirectToAction("ViewRaffles", "Admin");
+        }
 
         [HttpPost]
         public async Task<IActionResult> updateRaffle(raffle raffle, IFormFile R_ThumbnailImage, IFormFile R_MainImage)

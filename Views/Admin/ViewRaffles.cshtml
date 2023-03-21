@@ -19,8 +19,10 @@
     <link rel="stylesheet" href="~/admin-assets/assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="~/admin-assets/assets/vendors/css/vendor.bundle.base.css">
     <link href="~/admin-assets/assets/css/style.css" rel="stylesheet" />
-    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.min.css" rel="stylesheet">
+    <link href="~/admin-assets/assets/css/sweetalert2.min.css" rel="stylesheet">
     <link rel="shortcut icon" href="~/admin-assets/assets/images/favicon.ico" />
+    <link href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+
     <style>
         .badge{
             margin-right: 20px;
@@ -191,7 +193,7 @@
                                 <div class="card-body">
                                     <h4 class="card-title">Recent Raffles</h4>
                                     <div class="table-responsive">
-                                        <table class="table">
+                                        <table class="table" id="example">
                                             <thead>
                                                 <tr>
                                                     <th> Thumbnail </th>
@@ -200,7 +202,10 @@
                                                     <th> Available </th>
                                                     <th> Booked </th>
                                                     <th> BlockStartFrom </th> 
+                                                    <th> Status </th>
+                                                    <th> Change Status </th>
                                                     <th> Action </th> 
+                                                    
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -216,7 +221,17 @@
                                                             <td> @raffle.R_Total_Available </td>
                                                             <td> @raffle.R_Total_Booked </td>
                                                             <td> @raffle.R_BlockStartFrom </td>
-                                                             
+                                                            <td> 
+                                                                @if (@raffle.R_Active == true)
+                                                                {
+                                                                    <span>Active</span>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <span>Inactive</span>
+                                                                }
+                                                            </td>
+                                                            <td>@Html.ActionLink("Change Status", "ChangeRaffleStatus", "Admin", new { raffleid = @raffle.ID}, new {@class= "badge badge-secondary"})</td>
                                                             <td>
                                                                 @if(@raffle.R_BlockGenerated == false)
                                                                 {
@@ -258,13 +273,16 @@
             </div>
          </div>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="~/admin-assets/assets/js/jquery.min.js"></script>
     <script src="~/admin-assets/assets/vendors/js/vendor.bundle.base.js"></script>
     <script src="~/admin-assets/assets/js/off-canvas.js"></script>
     <script src="~/admin-assets/assets/js/hoverable-collapse.js"></script>
     <script src="~/admin-assets/assets/js/misc.js"></script>
     <script src="~/admin-assets/assets/js/file-upload.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js"></script>
+    <script src="~/admin-assets/assets/js/sweetalert2.all.min.js"></script>
+
+     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
     <script>
         function showSwal(rafid){ 
               Swal.fire({
@@ -281,6 +299,11 @@
                 }
             }) 
         } 
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('#example').DataTable();
+        });
     </script>
 </body>
 </html>

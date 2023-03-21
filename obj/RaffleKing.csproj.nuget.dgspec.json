@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "F:\\New folder\\Raffle-Website\\RaffleKing.csproj": {}
+    "E:\\Raffle-Website\\RaffleKing.csproj": {}
   },
   "projects": {
-    "F:\\New folder\\Raffle-Website\\RaffleKing.csproj": {
+    "E:\\Raffle-Website\\RaffleKing.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\New folder\\Raffle-Website\\RaffleKing.csproj",
+        "projectUniqueName": "E:\\Raffle-Website\\RaffleKing.csproj",
         "projectName": "RaffleKing",
-        "projectPath": "F:\\New folder\\Raffle-Website\\RaffleKing.csproj",
+        "projectPath": "E:\\Raffle-Website\\RaffleKing.csproj",
         "packagesPath": "C:\\Users\\sayem.hossain\\.nuget\\packages\\",
-        "outputPath": "F:\\New folder\\Raffle-Website\\obj\\",
+        "outputPath": "E:\\Raffle-Website\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

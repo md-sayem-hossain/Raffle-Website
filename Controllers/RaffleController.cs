@@ -16,7 +16,7 @@ namespace RaffleKing.Controllers
         {
             using (var db = new RaffleContext())
             {
-                var raffleList = db.raffles.ToList();
+                var raffleList = db.raffles.Where(c=>c.R_Active == true).ToList();
                 ViewData["UserShortCode"] = HttpContext.Session.GetString("UserShortCode");
                 ViewData["username"] = HttpContext.Session.GetString("username");
                 ViewBag.RaffleList = raffleList;
@@ -196,15 +196,18 @@ namespace RaffleKing.Controllers
                 {
                     var raffle = db.raffles.Where(c => c.ID == winners[i].raffleid).FirstOrDefault();
                     var raffleblk = db.raffleDetails.Where(c => c.Id == winners[i].blockid).FirstOrDefault();
-                    Winnershow winnersh = new Winnershow();
+                    if(raffle !=null && raffleblk!=null)
+                        {
+                        Winnershow winnersh = new Winnershow();
 
-                    winnersh.RaffleName = raffle.R_Title;
-                    winnersh.TIcketNo = raffleblk.RD_Raffle_block;
-                    winnersh.WinnerName = winners[i].winnerName;
-                    winnersh.Country = winners[i].country;
-                    winnersh.DrawnAt = raffle.R_DrawnAt;
+                        winnersh.RaffleName = raffle.R_Title;
+                        winnersh.TIcketNo = raffleblk.RD_Raffle_block;
+                        winnersh.WinnerName = winners[i].winnerName;
+                        winnersh.Country = winners[i].country;
+                        winnersh.DrawnAt = raffle.R_DrawnAt;
 
-                    winnershows.Add(winnersh);
+                        winnershows.Add(winnersh);
+                    } 
                 }
                 ViewBag.winners = winnershows;
             } 
